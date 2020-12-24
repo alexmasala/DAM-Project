@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "109007343106",
+    "project_id": "dam-personal-student-page",
+    "storage_bucket": "dam-personal-student-page.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109007343106:android:4b13e70e2cfd91dbc8211b",
+        "android_client_info": {
+          "package_name": "ro.ase.proiect_draft"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "109007343106-2bkgruat4lhtunff7rjoi1300uopt718.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTaxDO5YwPQndp7gUm7-3601BOM6eP058"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "109007343106-2bkgruat4lhtunff7rjoi1300uopt718.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

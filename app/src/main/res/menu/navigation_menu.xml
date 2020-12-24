@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menuProfile"
+    android:icon="@drawable/profile"
+    android:title="@string/profile" />
+
+    <item android:id="@+id/menuNotification"
+        android:icon="@drawable/notifications"
+        android:title="@string/notifications" />
+
+    <item android:id="@+id/menuMyJournal"
+        android:icon="@drawable/myjournal"
+        android:title="@string/myJournal" />
+
+    <item android:id="@+id/menuCourses"
+        android:icon="@drawable/courses"
+        android:title="@string/courses" />
+
+    <item android:id="@+id/menuSyllabus"
+        android:icon="@drawable/sillabus"
+        android:title="syllabus"/>
+
+    <item android:id="@+id/menuCalendar"
+        android:icon="@drawable/calendar2"
+        android:title="@string/calendar" />
+
+    <item android:id="@+id/menuTaxes"
+        android:icon="@drawable/tax2"
+        android:title="@string/taxes" />
+
+    <item android:title="@string/others">
+
+  <menu>
+
+    <item android:id="@+id/menuSettings"
+        android:icon="@drawable/settings"
+        android:title="@string/settings" />
+
+    <item android:id="@+id/menuAbout"
+        android:icon="@drawable/about"
+        android:title="@string/about" />
+
+  </menu>
+
+</item>
+
+</menu>

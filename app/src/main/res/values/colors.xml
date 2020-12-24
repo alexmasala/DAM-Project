@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    <Modificam culorile></Modificam>-->
+    <color name="colorPrimary">#673AB7</color>
+    <color name="colorPrimaryDark">#512DA8</color>
+    <color name="colorAccent">#FF5252</color>
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGreen">#32CD32</color>
+    <color name="colorDarkColorPrimary">#120524</color>
+    <color name="colorDarkPrimaryDark">#b6d46c</color>
+    <color name="colordarkColorAccent">#d4a76c</color>
+    <color name="backgroundLight">#ffffff</color>
+    <color name="backgroundDark">#131533</color>
+
+</resources>
