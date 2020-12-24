@@ -72,7 +72,7 @@ public class JSONActivity extends ListActivity {
         }
 
         syllabusList = new ArrayList<>();
-//
+
         URL url = null;
         try {
             url = new URL("https://pastebin.com/raw/Z09WUsZW");
