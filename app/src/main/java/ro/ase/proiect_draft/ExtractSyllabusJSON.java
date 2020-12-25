@@ -28,10 +28,11 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class ExtractSyllabusJSON extends AsyncTask<URL, Void, String> {
 
-
     public static List<Syllabus> listaOrar = new ArrayList<>();
 
     JSONArray syllabus = null;
+    JSONArray syllabus1 = null;
+    JSONArray syllabus2 = null;
 
     @Override
     protected String doInBackground(URL... urls) {
@@ -86,8 +87,36 @@ public class ExtractSyllabusJSON extends AsyncTask<URL, Void, String> {
 
                     Syllabus syllabus = new Syllabus(nr, capacitate, sef);
 
-                    listaOrar.add(syllabus);
+                    syllabus1 = c.getJSONArray("activitate");
 
+                    for (int j = 0; j < syllabus1.length(); j++) {
+                        c = syllabus1.getJSONObject(j);
+
+                        String tip = c.getString("tip");
+                        String zi = c.getString("zi");
+                        String ora = c.getString("ora");
+
+
+                        Syllabus syllabus1 = new Syllabus(tip, zi, ora);
+
+                        syllabus2 = c.getJSONArray("disciplina");
+
+                        for (int z = 0; z < syllabus2.length(); z++) {
+                            c = syllabus2.getJSONObject(z);
+
+                            String nume = c.getString("nume");
+                            String durata = c.getString("durata");
+                            String profesor = c.getString("profesor");
+
+
+                            Syllabus syllabus2 = new Syllabus(nume, durata, profesor);
+
+                            Syllabus syllabus3 = new Syllabus(nr, capacitate, sef,tip, zi, ora,nume, durata, profesor);
+
+                            listaOrar.add(syllabus3);
+                        }
+
+                    }
                 }
             }
             catch (JSONException e) {
