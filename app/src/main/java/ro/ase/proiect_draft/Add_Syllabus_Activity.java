@@ -75,7 +75,9 @@ public class Add_Syllabus_Activity extends AppCompatActivity {
             }
         };
         try {
-            extractSyllabusJSON.execute(new URL("https://pastebin.com/raw/MbbLUNsA"));
+//            extractSyllabusJSON.execute(new URL("https://pastebin.com/raw/MbbLUNsA"));
+            extractSyllabusJSON.execute(new URL("https://pastebin.com/raw/xniuuyZX"));
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

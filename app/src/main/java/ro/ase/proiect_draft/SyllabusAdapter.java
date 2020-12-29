@@ -20,11 +20,11 @@ public class SyllabusAdapter extends ArrayAdapter<Syllabus> {
     private LayoutInflater layoutInflater;
 
 
-    public SyllabusAdapter(@NonNull Context context, int resource, List<Syllabus> movieList, LayoutInflater layoutInflater) {
-        super(context, resource, movieList);
+    public SyllabusAdapter(@NonNull Context context, int resource, List<Syllabus> syllabusList, LayoutInflater layoutInflater) {
+        super(context, resource, syllabusList);
         this.context = context;
         this.resource = resource;
-        this.syllabusList = movieList;
+        this.syllabusList = syllabusList;
         this.layoutInflater = layoutInflater;
     }
 
@@ -45,6 +45,24 @@ public class SyllabusAdapter extends ArrayAdapter<Syllabus> {
 
             TextView tv3 = view.findViewById(R.id.sef);
             tv3.setText(syllabus.getSef());
+
+            TextView tv4 = view.findViewById(R.id.tip);
+            tv4.setText(syllabus.getTip());
+
+            TextView tv5 = view.findViewById(R.id.zi);
+            tv5.setText(syllabus.getZi());
+
+            TextView tv6 = view.findViewById(R.id.ora);
+            tv6.setText(syllabus.getOra());
+
+            TextView tv7 = view.findViewById(R.id.nume);
+            tv7.setText(syllabus.getNume());
+
+            TextView tv8 = view.findViewById(R.id.durata);
+            tv8.setText(syllabus.getDurata());
+
+            TextView tv9 = view.findViewById(R.id.profesor);
+            tv9.setText(syllabus.getProfesor());
         }
 
         return view;
