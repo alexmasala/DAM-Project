@@ -111,7 +111,7 @@ public class Add_Journal_Note_Activity extends AppCompatActivity
                     String title = etTitle.getText().toString();
                     Date data = new Date(etDate.getText().toString());
                     String mesaj = etMessage.getText().toString();
-                    noteType type = noteType.valueOf(spinnerNoteType.getSelectedItem().toString().toUpperCase());
+                    noteType type = noteType.valueOf(spinnerNoteType.getSelectedItem().toString().toUpperCase().replace(" ", ""));
 
                     RadioButton radioButton = findViewById(radioGroup.getCheckedRadioButtonId());
                     curricularNote crnote = curricularNote.valueOf(radioButton.getText().toString().toUpperCase());
