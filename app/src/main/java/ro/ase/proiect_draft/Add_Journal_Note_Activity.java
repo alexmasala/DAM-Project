@@ -19,6 +19,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import ro.ase.proiect_draft.data.JournalNote;
+import ro.ase.proiect_draft.data.JournalNote.CurricularNote;
+import ro.ase.proiect_draft.data.JournalNote.NoteType;
+
 public class Add_Journal_Note_Activity extends AppCompatActivity
 {
     public static final String ADD_JNOTE = "adaugaNotita";
@@ -58,7 +62,7 @@ public class Add_Journal_Note_Activity extends AppCompatActivity
 
             JournalNote jnote = (JournalNote) intent.getSerializableExtra(MyJournalFragment.EDIT_JNOTE);
 
-             etTitle.setText(jnote.getTitle());
+            etTitle.setText(jnote.getTitle());
             etDate.setText(new SimpleDateFormat(DATE_FORMAT, Locale.US).format(jnote.getData()));
             etMessage.setText(jnote.getMessage());
 
@@ -111,10 +115,10 @@ public class Add_Journal_Note_Activity extends AppCompatActivity
                     String title = etTitle.getText().toString();
                     Date data = new Date(etDate.getText().toString());
                     String mesaj = etMessage.getText().toString();
-                    noteType type = noteType.valueOf(spinnerNoteType.getSelectedItem().toString().toUpperCase().replace(" ", ""));
+                    NoteType type = NoteType.valueOf(spinnerNoteType.getSelectedItem().toString().toUpperCase().replace(" ", ""));
 
                     RadioButton radioButton = findViewById(radioGroup.getCheckedRadioButtonId());
-                    curricularNote crnote = curricularNote.valueOf(radioButton.getText().toString().toUpperCase());
+                    CurricularNote crnote = CurricularNote.valueOf(radioButton.getText().toString().toUpperCase());
                     JournalNote notita = new JournalNote(title, data, mesaj, type, crnote);
 
                     intent.putExtra(ADD_JNOTE, notita);
@@ -134,11 +138,11 @@ public class Add_Journal_Note_Activity extends AppCompatActivity
 
     public void ToggleTheme( boolean isChecked ){
         if (isChecked) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
         }
         else{
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
 
         finish();

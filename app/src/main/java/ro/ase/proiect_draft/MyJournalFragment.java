@@ -10,14 +10,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +24,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
+
+import ro.ase.proiect_draft.data.DataManager;
+import ro.ase.proiect_draft.data.JournalNote;
 
 import static ro.ase.proiect_draft.Add_Journal_Note_Activity.ADD_JNOTE;
 
@@ -100,22 +100,17 @@ public class MyJournalFragment extends Fragment {
                 AlertDialog dialog = new AlertDialog.Builder(getActivity())
                         .setTitle("Confirmare stergere")
                         .setMessage("Sigur doriti stergerea?")
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(getActivity(), "Nu s-a sters nimic!",
-                                        Toast.LENGTH_LONG).show();
-                                dialogInterface.cancel();
-                            }
-                        }).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                notesList.remove(notes);
-                                adapter.notifyDataSetChanged();
-                                Toast.makeText(getActivity(), "S-a sters filmul: "+notes.toString(),
-                                        Toast.LENGTH_LONG).show();
-                                dialogInterface.cancel();
-                            }
+                        .setNegativeButton("No", (dialogInterface, i) -> {
+                            Toast.makeText(getActivity(), "Nu s-a sters nimic!",
+                                    Toast.LENGTH_LONG).show();
+                            dialogInterface.cancel();
+                        }).setPositiveButton("Yes", (dialogInterface, i) -> {
+                            notesList.remove(notes);
+                            DataManager.getInstance().getNotes().delete(notes.getId());
+                            adapter.notifyDataSetChanged();
+                            Toast.makeText(getActivity(), "S-a sters filmul: "+notes.toString(),
+                                    Toast.LENGTH_LONG).show();
+                            dialogInterface.cancel();
                         }).create();
 
                 dialog.show();
@@ -137,6 +132,7 @@ public class MyJournalFragment extends Fragment {
             if (notes != null) {
 
                 notesList.add(notes);
+                DataManager.getInstance().getNotes().add(notes);
 
                 JournalAdapter adapter = new JournalAdapter(getActivity(), R.layout.journal_listview,
                         notesList, getLayoutInflater()){

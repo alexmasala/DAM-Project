@@ -1,35 +1,19 @@
 package ro.ase.proiect_draft;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.Serializable;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import ro.ase.proiect_draft.Syllabus;
-
-import static ro.ase.proiect_draft.Add_Syllabus_Activity.ADD_SYLLABUS;
+import ro.ase.proiect_draft.data.Syllabus;
 
 public class SyllabusFragment extends Fragment {
 

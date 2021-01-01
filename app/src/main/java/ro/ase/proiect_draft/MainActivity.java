@@ -17,6 +17,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Gravity;
@@ -26,11 +28,20 @@ import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
+import static ro.ase.proiect_draft.SettingsFragment.IS_CHECKED;
+import static ro.ase.proiect_draft.SettingsFragment.SAVE_SWITCH;
+
 public class MainActivity extends AppCompatActivity {
-//    FragmentManager manager;
-//    SettingsFragment fragment;
+    private static String SAVE_SWITCH_ACTIVITY = "is_checked";
+        FragmentManager manager;
+    SettingsFragment fragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        SharedPreferences sharedPreferences = this.getApplicationContext().getSharedPreferences(SAVE_SWITCH, Context.MODE_PRIVATE);
+        toggleTheme(sharedPreferences.getBoolean(IS_CHECKED, false));
+
         super.onCreate(savedInstanceState);
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
             setTheme(R.style.AppThemeDark);
@@ -39,13 +50,15 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_main);
 
+//        shp = getApplicationContext()
+//                .getSharedPreferences( SAVE_SWITCH_ACTIVITY , Context.MODE_PRIVATE);
 //        SharedPreferences spFragment = PreferenceManager.getDefaultSharedPreferences(this);
 //        Switch switchFragment = findViewById(R.id.switchMode);
 //        manager = getSupportFragmentManager();
 //        fragment = new SettingsFragment( );
         //fragment = new SettingsFragment(spFragment );
 //        manager.beginTransaction().add(android.R.id.content, fragment, "settingsFragment").commit();
-        //fragment.loadFromSharedPreferences(  );
+//        fragment.loadFromSharedPreferences(  );
       //  fragment.loadFromSharedPreferences(  spFragment );
 
         final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
@@ -66,18 +79,19 @@ public class MainActivity extends AppCompatActivity {
 
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
-            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
+            public void onDestinationChanged(@NonNull NavController controller,
+                                             @NonNull NavDestination destination, @Nullable Bundle arguments) {
                 textTitle.setText(destination.getLabel());
             }
         });
+
+
     }
 
-//    @Override
-//    protected  void onStart() {
-//        super.onStart();
-//        SharedPreferences spFragment = PreferenceManager.getDefaultSharedPreferences(this);
-//        fragment.loadFromSharedPreferences(spFragment);
-//    }
+    @Override
+    protected  void onStart() {
+        super.onStart();
+    }
 
 //    @Override
 //    protected  void onRestart() {
@@ -88,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     //AppCompatDelegate.setDefaultNightMode will cause your activities to reload automatically
-    public void ToggleTheme( boolean isChecked ){
+    public void toggleTheme(boolean isChecked ){
         if (isChecked) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 

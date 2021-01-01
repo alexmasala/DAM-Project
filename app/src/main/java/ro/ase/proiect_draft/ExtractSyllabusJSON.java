@@ -1,16 +1,10 @@
 package ro.ase.proiect_draft;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,12 +13,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+import ro.ase.proiect_draft.data.Syllabus;
 
 public class ExtractSyllabusJSON extends AsyncTask<URL, Void, String> {
 
@@ -38,40 +29,37 @@ public class ExtractSyllabusJSON extends AsyncTask<URL, Void, String> {
     protected String doInBackground(URL... urls) {
         HttpURLConnection conn = null;
 
-        try{
-            conn = (HttpURLConnection)urls[0].openConnection();
+        try {
+            conn = (HttpURLConnection) urls[0].openConnection();
             conn.setRequestMethod("GET");
             InputStream ist = conn.getInputStream();
 
             InputStreamReader isr = new InputStreamReader(ist);
             BufferedReader br = new BufferedReader(isr);
             String linie = null;
-            String sbuf = "";
-            while ((linie = br.readLine())!=null)
-            {
-                sbuf +=linie;
+            StringBuilder sbuf = new StringBuilder();
+            while ((linie = br.readLine()) != null) {
+                sbuf.append(linie);
             }
 
             //parsare JSON
-            loadJSON(sbuf);
+            loadJSON(sbuf.toString());
 
-            return sbuf;
+            return sbuf.toString();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return null;
+        throw new RuntimeException("Error: cannot reach resource '" + urls[0] + "'");
     }
 
-    public void loadJSON(String jsonStr)
-    {
-        if(jsonStr!=null)
-        {
+    public void loadJSON(String jsonStr) {
+        if (jsonStr != null) {
             JSONObject jsonObject = null;
             try {
                 jsonObject = new JSONObject(jsonStr);
             } catch (JSONException e) {
-                e.printStackTrace();
+                throw new RuntimeException("JSON is invalid");
             }
 
             try {
@@ -85,8 +73,6 @@ public class ExtractSyllabusJSON extends AsyncTask<URL, Void, String> {
                     String sef = c.getString("sef");
 
 
-                    Syllabus syllabus = new Syllabus(nr, capacitate, sef);
-
                     syllabus1 = c.getJSONArray("activitate");
 
                     for (int j = 0; j < syllabus1.length(); j++) {
@@ -95,9 +81,6 @@ public class ExtractSyllabusJSON extends AsyncTask<URL, Void, String> {
                         String tip = c.getString("tip");
                         String zi = c.getString("zi");
                         String ora = c.getString("ora");
-
-
-                        Syllabus syllabus1 = new Syllabus(tip, zi, ora);
 
                         syllabus2 = c.getJSONArray("disciplina");
 
@@ -108,22 +91,16 @@ public class ExtractSyllabusJSON extends AsyncTask<URL, Void, String> {
                             String durata = c.getString("durata");
                             String profesor = c.getString("profesor");
 
-
-                            Syllabus syllabus2 = new Syllabus(nume, durata, profesor);
-
-                            Syllabus syllabus3 = new Syllabus(nr, capacitate, sef,tip, zi, ora,nume, durata, profesor);
+                            Syllabus syllabus3 = new Syllabus(nr, capacitate, sef, tip, zi, ora, nume, durata, profesor);
 
                             listaOrar.add(syllabus3);
                         }
 
                     }
                 }
+            } catch (JSONException e) {
+                throw new RuntimeException("JSON is invalid");
             }
-            catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        else
-            Log.e("loadJSON", "JSON object is null");
+        } else throw new RuntimeException("JSON is invalid");
     }
 }
