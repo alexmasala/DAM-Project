@@ -100,17 +100,22 @@ public class MyJournalFragment extends Fragment {
                 AlertDialog dialog = new AlertDialog.Builder(getActivity())
                         .setTitle("Confirmare stergere")
                         .setMessage("Sigur doriti stergerea?")
-                        .setNegativeButton("No", (dialogInterface, i) -> {
-                            Toast.makeText(getActivity(), "Nu s-a sters nimic!",
-                                    Toast.LENGTH_LONG).show();
-                            dialogInterface.cancel();
-                        }).setPositiveButton("Yes", (dialogInterface, i) -> {
-                            notesList.remove(notes);
-                            DataManager.getInstance().getNotes().delete(notes.getId());
-                            adapter.notifyDataSetChanged();
-                            Toast.makeText(getActivity(), "S-a sters filmul: "+notes.toString(),
-                                    Toast.LENGTH_LONG).show();
-                            dialogInterface.cancel();
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getActivity(), "Nu s-a sters nimic!",
+                                        Toast.LENGTH_LONG).show();
+                                dialogInterface.cancel();
+                            }
+                        }).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                notesList.remove(notes);
+                                adapter.notifyDataSetChanged();
+                                Toast.makeText(getActivity(), "S-a sters filmul: "+notes.toString(),
+                                        Toast.LENGTH_LONG).show();
+                                dialogInterface.cancel();
+                            }
                         }).create();
 
                 dialog.show();
