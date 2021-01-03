@@ -28,7 +28,7 @@ public class RateActivity extends AppCompatActivity {
                 editor.putFloat("numStars", rating);
                 editor.apply();
                 editor.commit();
-                int ratings = preferences.getInt("numStars", 0);
+                float ratings = preferences.getFloat("numStars", 0);
                 //rate.setText(rating + "/" + String.valueOf(ratings));
             }
         });
@@ -38,19 +38,3 @@ public class RateActivity extends AppCompatActivity {
 
     }
 }
-
-//        rateUs.getOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener(){
-//            @Override
-//            public  void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser){
-//                int numStars = ratingBar.getNumStars();
-//                editor = preferences.edit();
-//                editor.putFloat("numStars", rating);
-//                editor.commit();
-//                int ratings = preferences.getInt("numStars", 0);
-//            }
-//        });
-//
-//        preferences = getApplicationContext().getSharedPreferences(RATING, MODE_PRIVATE);
-//        editor = preferences.edit();
-//
-//    }

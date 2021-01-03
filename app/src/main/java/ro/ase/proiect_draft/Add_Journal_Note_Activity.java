@@ -140,32 +140,6 @@ public class Add_Journal_Note_Activity extends AppCompatActivity
         });
       }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.activities_menu, menu);
-//        return true;
-//        menu.add(0, R.id.optStat, 0, "Statistics");
-//        menu.add(0, R.id.optRate, 1, "Rate Us");
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item){
-        switch (item.getItemId()){
-            case R.id.optStat:
-                Intent statInt = new Intent(this, StatisticsActivity.class);
-                Toast.makeText(this, "Statistics option", Toast.LENGTH_SHORT).show();
-                startActivity(statInt);
-                break;
-            case R.id.optRate:
-                Intent rateInt = new Intent(this, RateActivity.class);
-                Toast.makeText(this, "Rate option", Toast.LENGTH_SHORT).show();
-                startActivity(rateInt);
-
-                return true;
-        }
-        return false;
-    }
 
     public void toggleTheme( boolean isChecked ){
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
