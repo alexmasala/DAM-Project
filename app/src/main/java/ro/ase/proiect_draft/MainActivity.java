@@ -22,9 +22,12 @@ import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -32,15 +35,19 @@ import static ro.ase.proiect_draft.SettingsFragment.IS_CHECKED;
 import static ro.ase.proiect_draft.SettingsFragment.SAVE_SWITCH;
 
 public class MainActivity extends AppCompatActivity {
-    private static String SAVE_SWITCH_ACTIVITY = "is_checked";
-        FragmentManager manager;
-    SettingsFragment fragment;
+
+//    private SharedPreferences.OnSharedPreferenceChangeListener prefListener;
+//    SharedPreferences pref;
+//    public static final String PREF_LANGUAGE = "language_pref";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         SharedPreferences sharedPreferences = this.getApplicationContext().getSharedPreferences(SAVE_SWITCH, Context.MODE_PRIVATE);
         toggleTheme(sharedPreferences.getBoolean(IS_CHECKED, false));
+
+        //Limba fisier schimbare
+       // getFragmentManager().beginTransaction().replace(android.R.id.content, new SettingsFragment()).commit();
 
         super.onCreate(savedInstanceState);
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
@@ -49,17 +56,6 @@ public class MainActivity extends AppCompatActivity {
             setTheme(R.style.AppTheme);
         }
         setContentView(R.layout.activity_main);
-
-//        shp = getApplicationContext()
-//                .getSharedPreferences( SAVE_SWITCH_ACTIVITY , Context.MODE_PRIVATE);
-//        SharedPreferences spFragment = PreferenceManager.getDefaultSharedPreferences(this);
-//        Switch switchFragment = findViewById(R.id.switchMode);
-//        manager = getSupportFragmentManager();
-//        fragment = new SettingsFragment( );
-        //fragment = new SettingsFragment(spFragment );
-//        manager.beginTransaction().add(android.R.id.content, fragment, "settingsFragment").commit();
-//        fragment.loadFromSharedPreferences(  );
-      //  fragment.loadFromSharedPreferences(  spFragment );
 
         final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
         findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener() {
@@ -85,30 +81,47 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu){
+//        getMenuInflater().inflate(R.menu.activities_menu, menu);
+////        return true;
+////        menu.add(0, R.id.optStat, 0, "Statistics");
+////        menu.add(0, R.id.optRate, 1, "Rate Us");
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+//        switch (item.getItemId()){
+//            case R.id.optStat:
+//                Intent statInt = new Intent(this, StatisticsActivity.class);
+//                Toast.makeText(this, "Statistics option", Toast.LENGTH_SHORT).show();
+//                startActivity(statInt);
+//                break;
+//            case R.id.optRate:
+//                Intent rateInt = new Intent(this, RateActivity.class);
+//                Toast.makeText(this, "Rate option", Toast.LENGTH_SHORT).show();
+//                startActivity(rateInt);
+//
+//                return true;
+//        }
+//        return false;
+//    }
 
     @Override
     protected  void onStart() {
         super.onStart();
     }
-
-//    @Override
-//    protected  void onRestart() {
-//        super.onRestart();
-//        fragment.loadFromSharedPreferences();
-//
-//    }
-
-
     //AppCompatDelegate.setDefaultNightMode will cause your activities to reload automatically
     public void toggleTheme(boolean isChecked ){
         if (isChecked) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
         }
         else{
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
+
 }

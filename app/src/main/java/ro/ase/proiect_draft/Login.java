@@ -32,6 +32,8 @@ public class Login extends AppCompatActivity {
         email = findViewById(R.id.email3);
         passw = findViewById(R.id.password3);
 
+        //Autentificare utilizator
+
         //Cand aplicatia se deschide va cauta fisierul sharedpreferances
         SharedPreferences shp = getSharedPreferences( " checkbox", MODE_PRIVATE);
         String checkbox = shp.getString("remember", "");
