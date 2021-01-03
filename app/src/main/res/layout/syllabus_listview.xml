@@ -5,58 +5,68 @@
     android:background="#e9e4e5"
     android:layout_height="match_parent">
 
+
     <TextView
         android:id="@+id/nr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorBackground"
         />
 
     <TextView
         android:id="@+id/capacitate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorBackground"
         />
 
     <TextView
         android:id="@+id/sef"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorBackground"
         />
 
     <TextView
         android:id="@+id/tip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorBackground"
         />
 
     <TextView
         android:id="@+id/zi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorBackground"
         />
 
     <TextView
         android:id="@+id/ora"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorBackground"
         />
 
     <TextView
         android:id="@+id/nume"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorBackground"
         />
 
     <TextView
         android:id="@+id/durata"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorBackground"
         />
 
     <TextView
         android:id="@+id/profesor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorBackground"
         />
 
 </LinearLayout>

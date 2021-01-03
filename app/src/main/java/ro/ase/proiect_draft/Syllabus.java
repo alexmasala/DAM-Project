@@ -1,4 +1,4 @@
-package ro.ase.proiect_draft.data;
+package ro.ase.proiect_draft;
 
 import android.content.Context;
 
@@ -8,9 +8,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
-public class Syllabus implements Serializable, Indexable {
+public class Syllabus implements Serializable{
 
-    private String id = UUID.randomUUID().toString();
     private int nr;
     private int capacitate;
     private String sef;
@@ -28,12 +27,6 @@ public class Syllabus implements Serializable, Indexable {
 ////    public Syllabus(Context context){
 ////        this.context=context;
 ////    }
-
-
-    @Override
-    public String getId() {
-        return id;
-    }
 
     public Syllabus(int nr, int capacitate, String sef) {
         this.nr = nr;
@@ -146,13 +139,4 @@ public class Syllabus implements Serializable, Indexable {
                 '}';
     }
 
-    @java.lang.Override
-    public String getDeleteQuery() {
-        return null;
-    }
-
-    @java.lang.Override
-    public String getInsertQuery() {
-        return null;
-    }
 }

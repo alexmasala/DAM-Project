@@ -1,11 +1,16 @@
 package ro.ase.proiect_draft;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.RatingBar;
+
+import static ro.ase.proiect_draft.SettingsFragment.IS_CHECKED;
+import static ro.ase.proiect_draft.SettingsFragment.SAVE_SWITCH;
 
 public class RateActivity extends AppCompatActivity {
 
@@ -16,7 +21,13 @@ public class RateActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            setTheme(R.style.AppThemeDark);
+        } else {
+            setTheme(R.style.AppTheme);
+        }
         setContentView(R.layout.activity_rate);
         rateUs = findViewById(R.id.ratingBar);
 
@@ -29,12 +40,11 @@ public class RateActivity extends AppCompatActivity {
                 editor.apply();
                 editor.commit();
                 float ratings = preferences.getFloat("numStars", 0);
-                //rate.setText(rating + "/" + String.valueOf(ratings));
             }
         });
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         float rating = preferences.getFloat("numStars", 0f);
         rateUs.setRating(rating);
-
     }
+
 }

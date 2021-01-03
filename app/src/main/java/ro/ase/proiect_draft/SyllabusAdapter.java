@@ -12,8 +12,6 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import ro.ase.proiect_draft.data.Syllabus;
-
 public class SyllabusAdapter extends ArrayAdapter<Syllabus> {
 
     private Context context;

@@ -1,37 +1,32 @@
-package ro.ase.proiect_draft.data;
+package ro.ase.proiect_draft;
 
 import java.io.Serializable;
 
-public class Exam implements Serializable, Indexable {
-    String idSerie;
-    String id;
+public class Exam implements Serializable {
+    String idExam;
     String numeMaterie;
+    int numarCredite;
     String tipExam;
     String dataSustinere;
     String ora;
     int durataOre;
 
-    public Exam(String idSerie, String idExam, String numeMaterie, String tipExam, String dataSustinere, String ora, int durataOre) {
-        this.idSerie = idSerie;
-        this.id = idExam;
+    public Exam(String idExam, String numeMaterie, int numarCredite, String tipExam, String dataSustinere, String ora, int durataOre) {
+        this.idExam = idExam;
         this.numeMaterie = numeMaterie;
+        this.numarCredite = numarCredite;
         this.tipExam = tipExam;
         this.dataSustinere = dataSustinere;
         this.ora = ora;
         this.durataOre = durataOre;
     }
 
-    @Override
-    public String getId() {
-        return id;
+    public String getIdExam() {
+        return idExam;
     }
 
-    public void setIdSerie(String idSerie) {
-        this.idSerie = idSerie;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public void setIdExam(String idExam) {
+        this.idExam = idExam;
     }
 
     public String getNumeMaterie() {
@@ -40,6 +35,14 @@ public class Exam implements Serializable, Indexable {
 
     public void setNumeMaterie(String numeMaterie) {
         this.numeMaterie = numeMaterie;
+    }
+
+    public int getNumarCredite() {
+        return numarCredite;
+    }
+
+    public void setNumarCredite(int numarCredite) {
+        this.numarCredite = numarCredite;
     }
 
     public String getTipExam() {
@@ -76,24 +79,14 @@ public class Exam implements Serializable, Indexable {
 
     @Override
     public String toString() {
-        return "Exames{" +
-                "idSerie='" + idSerie + '\'' +
-                ", idExam='" + id + '\'' +
+        return "Exam{" +
+                "idExam='" + idExam + '\'' +
                 ", numeMaterie='" + numeMaterie + '\'' +
+                ", numarCredite=" + numarCredite +
                 ", tipExam='" + tipExam + '\'' +
                 ", dataSustinere='" + dataSustinere + '\'' +
                 ", ora='" + ora + '\'' +
                 ", durataOre=" + durataOre +
                 '}';
-    }
-
-    @Override
-    public String getDeleteQuery() {
-        return null;
-    }
-
-    @Override
-    public String getInsertQuery() {
-        return null;
     }
 }

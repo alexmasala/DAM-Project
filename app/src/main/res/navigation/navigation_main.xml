@@ -12,12 +12,6 @@
         tools:layout="@layout/fragment_profile" />
 
     <fragment
-        android:id="@+id/menuNotification"
-        android:name="ro.ase.proiect_draft.NotificationFragment"
-        android:label="Notifications"
-        tools:layout="@layout/fragment_notification" />
-
-    <fragment
         android:id="@+id/menuMyJournal"
         android:name="ro.ase.proiect_draft.MyJournalFragment"
         android:label="My Journal"
@@ -34,12 +28,6 @@
         android:name="ro.ase.proiect_draft.SyllabusFragment"
         android:label="Syllabus"
         tools:layout="@layout/fragment_syllabus" />
-
-    <fragment
-        android:id="@+id/menuCalendar"
-        android:name="ro.ase.proiect_draft.CalendarFragment"
-        android:label="My Journal"
-        tools:layout="@layout/fragment_calendar" />
 
     <fragment
         android:id="@+id/menuTaxes"

@@ -5,7 +5,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +18,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import ro.ase.proiect_draft.data.Syllabus;
+import static ro.ase.proiect_draft.SettingsFragment.IS_CHECKED;
+import static ro.ase.proiect_draft.SettingsFragment.SAVE_SWITCH;
 
 public class Add_Syllabus_Activity extends AppCompatActivity {
 
@@ -50,14 +53,7 @@ public class Add_Syllabus_Activity extends AppCompatActivity {
                     @Override
                     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                         View view = super.getView(position, convertView, parent);
-
                         Syllabus syllabus =  syllabusList.get(position);
-
-//                        TextView tvProfit = view.findViewById(R.id.profit);
-//                        if(movie.getProfit() > 100000)
-//                            tvProfit.setTextColor(Color.GREEN);
-//                        else
-//                            tvProfit.setTextColor(Color.RED);
 
                         return view;
                     }
@@ -75,16 +71,4 @@ public class Add_Syllabus_Activity extends AppCompatActivity {
 
     }
 
-    public void ToggleTheme( boolean isChecked ){
-        if (isChecked) {
-            //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
-        }
-        else{
-            //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
-
-        finish();
-        startActivity(new Intent(Add_Syllabus_Activity.this, Add_Syllabus_Activity.this.getClass()));
-    }
 }

@@ -19,7 +19,7 @@ import android.widget.Switch;
 
 import java.util.Locale;
 
-public class SettingsFragment extends PreferenceFragment {
+public class SettingsFragment extends Fragment {
     public SettingsFragment() {
         // Required empty public constructor
     }

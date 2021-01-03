@@ -10,7 +10,6 @@
     tools:context=".SettingsFragment"
     tools:ignore="MissingClass">
 
-
     <!-- TODO: Update blank fragment layout -->
 
     <TextView

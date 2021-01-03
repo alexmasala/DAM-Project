@@ -13,7 +13,6 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
-import ro.ase.proiect_draft.data.Syllabus;
 
 public class SyllabusFragment extends Fragment {
 

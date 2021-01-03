@@ -25,9 +25,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import ro.ase.proiect_draft.data.DataManager;
-import ro.ase.proiect_draft.data.JournalNote;
-
 import static ro.ase.proiect_draft.Add_Journal_Note_Activity.ADD_JNOTE;
 
 public class MyJournalFragment extends Fragment {
@@ -137,7 +134,7 @@ public class MyJournalFragment extends Fragment {
             if (notes != null) {
 
                 notesList.add(notes);
-                DataManager.getInstance().getNotes().add(notes);
+
 
                 JournalAdapter adapter = new JournalAdapter(getActivity(), R.layout.journal_listview,
                         notesList, getLayoutInflater()){

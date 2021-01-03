@@ -1,9 +1,9 @@
-package ro.ase.proiect_draft.data;
+package ro.ase.proiect_draft;
 
 import java.io.Serializable;
 import java.util.UUID;
 
-public class Student implements Serializable, Indexable {
+public class Student implements Serializable {
 
     private String id = UUID.randomUUID().toString();
     private String nume;
@@ -22,7 +22,6 @@ public class Student implements Serializable, Indexable {
         this.password = password;
     }
 
-    @Override
     public String getId() {
         return id;
     }
@@ -87,13 +86,4 @@ public class Student implements Serializable, Indexable {
                 '}';
     }
 
-    @Override
-    public String getDeleteQuery() {
-        return null;
-    }
-
-    @Override
-    public String getInsertQuery() {
-        return null;
-    }
 }

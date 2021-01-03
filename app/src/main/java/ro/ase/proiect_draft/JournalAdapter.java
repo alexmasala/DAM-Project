@@ -12,8 +12,6 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-import ro.ase.proiect_draft.data.JournalNote;
-
 public class JournalAdapter extends ArrayAdapter<JournalNote> {
     private Context context;
     private int resource;

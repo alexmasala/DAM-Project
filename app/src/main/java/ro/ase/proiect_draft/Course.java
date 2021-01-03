@@ -1,18 +1,18 @@
-package ro.ase.proiect_draft.data;
+package ro.ase.proiect_draft;
 
 import java.io.Serializable;
 
-public class Course implements Serializable, Indexable {
-    String id;
-    String idExam;
+public class Course implements Serializable {
 
+    String idCurs;
+    String idExam;
     String numeCurs;
     String prof;
     String tipSeminar;
     String serie;
 
     public Course(String idCurs, String numeCurs, String prof, String tipSeminar, String idSerie) {
-        this.id = idCurs;
+        this.idCurs = idCurs;
         this.numeCurs = numeCurs;
         this.prof = prof;
         this.tipSeminar = tipSeminar;
@@ -27,13 +27,13 @@ public class Course implements Serializable, Indexable {
         this.idExam = idExam;
     }
 
-    @Override
-    public String getId() {
-        return id;
+
+    public String getIdCurs() {
+        return idCurs;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdCurs(String id) {
+        this.idCurs = id;
     }
 
     public String getNumeCurs() {
@@ -71,7 +71,7 @@ public class Course implements Serializable, Indexable {
     @Override
     public String toString() {
         return "Courses{" +
-                "idCurs='" + id + '\'' +
+                "idCurs='" + idCurs + '\'' +
                 ", numeCurs='" + numeCurs + '\'' +
                 ", idProf='" + prof + '\'' +
                 ", tipSeminar='" + tipSeminar + '\'' +
@@ -79,13 +79,4 @@ public class Course implements Serializable, Indexable {
                 '}';
     }
 
-    @Override
-    public String getDeleteQuery() {
-        return "";
-    }
-
-    @Override
-    public String getInsertQuery() {
-        return "";
-    }
 }

@@ -15,8 +15,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import ro.ase.proiect_draft.data.Syllabus;
-
 public class ExtractSyllabusJSON extends AsyncTask<URL, Void, String> {
 
     public static List<Syllabus> listaOrar = new ArrayList<>();

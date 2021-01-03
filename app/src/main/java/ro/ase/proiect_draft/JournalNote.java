@@ -1,4 +1,4 @@
-package ro.ase.proiect_draft.data;
+package ro.ase.proiect_draft;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -6,7 +6,7 @@ import java.util.UUID;
 
 
 
-public class JournalNote implements Serializable, Indexable {
+public class JournalNote implements Serializable {
 
     private String id;
     private String title;
@@ -24,7 +24,7 @@ public class JournalNote implements Serializable, Indexable {
         this.curNote = curNote;
     }
 
-    @Override
+
     public String getId() {
         return id;
     }
@@ -78,16 +78,6 @@ public class JournalNote implements Serializable, Indexable {
                 ", notetype=" + notetype +
                 ", curNote=" + curNote +
                 '}';
-    }
-
-    @Override
-    public String getDeleteQuery() {
-        return null;
-    }
-
-    @Override
-    public String getInsertQuery() {
-        return null;
     }
 
     public enum NoteType {FAVORITE, IMPORTANT, REMINDMELATER}
