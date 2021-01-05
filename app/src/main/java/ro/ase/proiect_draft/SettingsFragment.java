@@ -30,22 +30,12 @@ public class SettingsFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private boolean darkMode = false;
 
-    //Language setting
-   // public static final String PREF_LANGUAGE = "language_pref";
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
         switchTheme = (Switch) view.findViewById(R.id.switchMode);
-        //Spinner spLanguage = view.findViewById(R.id.spinnerSelectLanguage);
-        //Array Adapter pt spinner
-//        ArrayAdapter<CharSequence> adapterLanguage = ArrayAdapter.createFromResource(getActivity().getApplicationContext(),
-//                R.array.language_setting, R.layout.fragment_settings);
-//        spLanguage.setAdapter(adapterLanguage);
-
-
         sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(SAVE_SWITCH, Context.MODE_PRIVATE);
 
         loadFromSharedPreferences();
@@ -58,19 +48,6 @@ public class SettingsFragment extends Fragment {
                 storeToSharedPreferences();
             }
         });
-
-
-        //Spinner Limba Setting
-//
-//        ArrayAdapter<String> adaptor = (ArrayAdapter<String>)spLanguage.getAdapter();
-//        for(int i=0;i<adaptor.getCount();i++)
-//            if(adaptor.getItem(i).equals(jnote.getNotetype()))
-//            {
-//                spLanguage.setSelection(i);
-//                break;
-//            }
-
-       // Landscape  Setting
 
 
         return view;
@@ -96,62 +73,4 @@ public class SettingsFragment extends Fragment {
             activity.toggleTheme(darkMode);
         }
     }
-
-//    //Setare limba SharedPreferences
-//
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-//    }
-//
-//    @Override
-//    public void onPause() {
-//        getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
-//        super.onPause();
-//    }
-//
-//    @Override
-//    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-//        if(key.equals("PREF_LANGUAGE"))
-//        {
-//            Preference connectionPref = findPreference(key);
-//            connectionPref.setSummary(sharedPreferences.getString(key, ""));
-//            changeLanguagePref( getActivity().getApplicationContext() ,sharedPreferences.getString(key, ""));
-//        }
-//
-//    }
-//
-//    private void changeLanguagePref(Context context, String lang){
-//        Locale locale = null;
-//        if (lang.equals("English")){
-//            locale = new Locale("en_");
-//        }else if (lang.equals("Française")){
-//            locale = new Locale("fr_");
-//        }else{
-//            locale = new Locale("sv_SE");
-//        }
-//        Locale.setDefault(locale);
-//        Configuration config = new Configuration();
-//        config.locale = locale;
-//        context.getResources().updateConfiguration(config, null);
-//    }
-//
-//    public static void updateLanguage(Context context, String selectedLanguage) {
-//        if (!"".equals(selectedLanguage)) {
-//            if ("English".equals(selectedLanguage)) {
-//                selectedLanguage = "en";
-//            } else if ("Française".equals(selectedLanguage)) {
-//                selectedLanguage = "fr";
-//            }
-//            else if ("Svenska".equals(selectedLanguage)) {
-//                selectedLanguage = "sv_SE";
-//            }
-//            Locale locale = new Locale(selectedLanguage);
-//            Locale.setDefault(locale);
-//            Configuration config = new Configuration();
-//            config.locale = locale;
-//            context.getResources().updateConfiguration(config, null);
-//        }
-//    }
 }

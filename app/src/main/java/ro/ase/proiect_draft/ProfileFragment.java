@@ -26,28 +26,19 @@ public class ProfileFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    Button statistics, rating;
+    Button statistics;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_profile, container, false);
         statistics = view.findViewById(R.id.btnStatistics);
-        rating = view.findViewById(R.id.btnRating);
 
         statistics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent statInt = new Intent(getActivity(), StatisticsActivity.class);
                 startActivity(statInt);
-            }
-        });
-
-        rating.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent rateInt = new Intent(getActivity(), RateActivity.class);
-                startActivity(rateInt);
             }
         });
 

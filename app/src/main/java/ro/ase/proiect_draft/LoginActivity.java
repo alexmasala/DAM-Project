@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText email, passw;
     private Button login;
@@ -39,7 +39,7 @@ public class Login extends AppCompatActivity {
         String checkbox = shp.getString("remember", "");
 
         if(checkbox.equals("true")){
-            Intent intent = new Intent(Login.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         }else if(checkbox.equals("false")){
             Toast.makeText(this, "Please log in", Toast.LENGTH_SHORT).show();
@@ -62,7 +62,7 @@ public class Login extends AppCompatActivity {
                     SharedPreferences.Editor editor = shp.edit();
                     editor.putString("rememberMe", "true");
                     editor.apply();
-                    Toast.makeText(Login.this, "Checked", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Checked", Toast.LENGTH_SHORT).show();
 
                 } else if( !compoundButton.isChecked()){
 
@@ -70,7 +70,7 @@ public class Login extends AppCompatActivity {
                     SharedPreferences.Editor editor = shp.edit();
                     editor.putString("rememberMe", "false");
                     editor.apply();
-                    Toast.makeText(Login.this, "Unchecked", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Unchecked", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -78,7 +78,7 @@ public class Login extends AppCompatActivity {
         newHere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Register.class);
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intent);
             }
         });

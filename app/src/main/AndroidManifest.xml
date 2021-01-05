@@ -13,8 +13,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".StatisticsActivity" />
         <activity android:name=".RateActivity" />
-        <activity android:name=".Login" />
-        <activity android:name=".Register" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".Add_Syllabus_Activity" />
         <activity android:name=".JSONActivity" /> <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
