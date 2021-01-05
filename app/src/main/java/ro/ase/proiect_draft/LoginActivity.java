@@ -64,13 +64,13 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             //Preluare date existente din firebase
             //Verificarea datelor
-          boolean semafor = loginUserAccount();
+          //boolean semafor = loginUserAccount();
             @Override
             public void onClick(View v) {
-                if(semafor){
+               // if(semafor){
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
-                } else Toast.makeText(LoginActivity.this, "Log In Failed", Toast.LENGTH_SHORT).show();
+                //} else Toast.makeText(LoginActivity.this, "Log In Failed", Toast.LENGTH_SHORT).show();
             }
         });
 
