@@ -6,8 +6,9 @@ import org.json.JSONArray;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
-public class Syllabus implements Serializable {
+public class Syllabus implements Serializable{
 
     private int nr;
     private int capacitate;
@@ -137,4 +138,5 @@ public class Syllabus implements Serializable {
                 ", profesor='" + profesor + '\'' +
                 '}';
     }
+
 }

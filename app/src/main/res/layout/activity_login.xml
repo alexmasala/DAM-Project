@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/space_wallpaper"
-    tools:context=".Login">
+    tools:context=".LoginActivity">
 
     <EditText
         android:id="@+id/password3"
@@ -34,10 +34,11 @@
         android:text="Authentification"
         android:textColor="#E91E63"
         android:textSize="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/email3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/email3"
@@ -60,8 +61,8 @@
 
     <TextView
         android:id="@+id/newHere"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="261dp"
+        android:layout_height="37dp"
         android:layout_marginStart="53dp"
         android:layout_marginEnd="53dp"
         android:layout_marginBottom="210dp"
@@ -70,17 +71,42 @@
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.659"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email3" />
+        app:layout_constraintTop_toBottomOf="@+id/btnLogIn"
+        app:layout_constraintVertical_bias="0.866" />
+
+    <CheckBox
+        android:id="@+id/chbRemember"
+        android:layout_width="277dp"
+        android:layout_height="35dp"
+        android:backgroundTint="#FBF6F6"
+        android:buttonTint="#FDFCFC"
+        android:text="Remember me later"
+        android:textColor="#FDFCFC"
+        android:textColorHighlight="#FDFCFC"
+        android:textColorHint="#FDFCFC"
+        android:textColorLink="#FDFCFC"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.611"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password3"
+        app:layout_constraintVertical_bias="0.348" />
 
     <Button
-        android:id="@+id/btnSignUp"
+        android:id="@+id/btnLogIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="83dp"
-        android:layout_marginTop="40dp"
-        android:text="Sign Up"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="80dp"
+        android:text="Log In"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/password3"
-        app:layout_constraintTop_toBottomOf="@+id/password3" />
+        app:layout_constraintTop_toBottomOf="@+id/password3"
+        app:layout_constraintVertical_bias="0.031" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

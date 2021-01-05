@@ -11,20 +11,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Add_Syllabus_Activity"></activity>
-        <activity android:name=".JSONActivity" /> <!-- <activity android:name=".Login"> -->
-        <!-- <intent-filter> -->
+        <activity android:name=".StatisticsActivity" />
+        <activity android:name=".RateActivity" />
+
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".Add_Syllabus_Activity" />
+        <activity android:name=".JSONActivity" /> <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->
         <!-- </activity> -->
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".LoginActivity"
+            android:configChanges="locale">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity" />
         <activity android:name=".Add_Journal_Note_Activity" />
     </application>
 

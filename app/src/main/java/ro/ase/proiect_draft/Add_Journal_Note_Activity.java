@@ -3,7 +3,9 @@ package ro.ase.proiect_draft;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,6 +21,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import ro.ase.proiect_draft.JournalNote.CurricularNote;
+import ro.ase.proiect_draft.JournalNote.NoteType;
+
+import static ro.ase.proiect_draft.SettingsFragment.IS_CHECKED;
+import static ro.ase.proiect_draft.SettingsFragment.SAVE_SWITCH;
+
 public class Add_Journal_Note_Activity extends AppCompatActivity
 {
     public static final String ADD_JNOTE = "adaugaNotita";
@@ -28,11 +36,6 @@ public class Add_Journal_Note_Activity extends AppCompatActivity
     {
 
         super.onCreate(savedInstanceState);
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
-            setTheme(R.style.AppThemeDark);
-        } else {
-            setTheme(R.style.AppTheme);
-        }
         setContentView(R.layout.activity_add__journal__note_);
 
 
@@ -58,7 +61,7 @@ public class Add_Journal_Note_Activity extends AppCompatActivity
 
             JournalNote jnote = (JournalNote) intent.getSerializableExtra(MyJournalFragment.EDIT_JNOTE);
 
-             etTitle.setText(jnote.getTitle());
+            etTitle.setText(jnote.getTitle());
             etDate.setText(new SimpleDateFormat(DATE_FORMAT, Locale.US).format(jnote.getData()));
             etMessage.setText(jnote.getMessage());
 
@@ -111,10 +114,10 @@ public class Add_Journal_Note_Activity extends AppCompatActivity
                     String title = etTitle.getText().toString();
                     Date data = new Date(etDate.getText().toString());
                     String mesaj = etMessage.getText().toString();
-                    noteType type = noteType.valueOf(spinnerNoteType.getSelectedItem().toString().toUpperCase());
+                    NoteType type = NoteType.valueOf(spinnerNoteType.getSelectedItem().toString().toUpperCase().replace(" ", ""));
 
                     RadioButton radioButton = findViewById(radioGroup.getCheckedRadioButtonId());
-                    curricularNote crnote = curricularNote.valueOf(radioButton.getText().toString().toUpperCase());
+                    CurricularNote crnote = CurricularNote.valueOf(radioButton.getText().toString().toUpperCase());
                     JournalNote notita = new JournalNote(title, data, mesaj, type, crnote);
 
                     intent.putExtra(ADD_JNOTE, notita);
@@ -131,19 +134,4 @@ public class Add_Journal_Note_Activity extends AppCompatActivity
 
         });
       }
-
-    public void ToggleTheme( boolean isChecked ){
-        if (isChecked) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
-        }
-        else{
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
-
-        finish();
-        startActivity(new Intent(Add_Journal_Note_Activity.this, Add_Journal_Note_Activity.this.getClass()));
-
-    }
-
-    }
+}

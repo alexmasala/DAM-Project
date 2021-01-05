@@ -1,28 +1,32 @@
 package ro.ase.proiect_draft;
 
-import android.provider.ContactsContract;
-
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
-enum noteType{FAVORITE, IMPORTANT, REMINDMELATER}
 
-enum curricularNote{LECTURE, LAB, OTHERS}
 
 public class JournalNote implements Serializable {
 
-private String title;
-private Date data;
-private String message;
-private noteType notetype;
-private curricularNote curNote;
+    private String id;
+    private String title;
+    private Date data;
+    private String message;
+    private NoteType notetype;
+    private CurricularNote curNote;
 
-    public JournalNote(String title, Date data, String message, noteType notetype, curricularNote curNote) {
+    public JournalNote(String title, Date data, String message, NoteType notetype, CurricularNote curNote) {
+        id = UUID.randomUUID().toString();
         this.title = title;
         this.data = data;
         this.message = message;
         this.notetype = notetype;
         this.curNote = curNote;
+    }
+
+
+    public String getId() {
+        return id;
     }
 
     public String getTitle() {
@@ -49,19 +53,19 @@ private curricularNote curNote;
         this.message = message;
     }
 
-    public noteType getNotetype() {
+    public NoteType getNotetype() {
         return notetype;
     }
 
-    public void setNotetype(noteType notetype) {
+    public void setNotetype(NoteType notetype) {
         this.notetype = notetype;
     }
 
-    public curricularNote getCurNote() {
+    public CurricularNote getCurNote() {
         return curNote;
     }
 
-    public void setCurNote(curricularNote curNote) {
+    public void setCurNote(CurricularNote curNote) {
         this.curNote = curNote;
     }
 
@@ -75,4 +79,8 @@ private curricularNote curNote;
                 ", curNote=" + curNote +
                 '}';
     }
+
+    public enum NoteType {FAVORITE, IMPORTANT, REMINDMELATER}
+
+    public enum CurricularNote {LECTURE, LAB, OTHERS}
 }

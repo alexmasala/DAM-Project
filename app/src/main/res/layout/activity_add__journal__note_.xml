@@ -15,7 +15,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Introduceti titlul"
+        android:hint="@string/introduceti_titlul"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +27,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="Introduceti data in jurnal"
+        android:hint="@string/introduceti_data_in_jurnal"
         android:inputType="date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTitle" />
@@ -40,7 +40,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="40dp"
         android:ems="10"
-        android:hint="Scrieti notita"
+        android:hint="@string/scrieti_notita"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
@@ -51,7 +51,7 @@
         android:layout_height="30dp"
         android:layout_marginTop="48dp"
         android:background="?attr/colorBackground"
-        android:text="Tipul notitei:"
+        android:text="@string/tipul_notitei"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextMessage" />
 
@@ -84,21 +84,21 @@
             android:layout_height="wrap_content"
             android:background="?attr/colorBackground"
             android:checked="true"
-            android:text="Lecture" />
+            android:text="@string/lecture" />
 
         <RadioButton
             android:id="@+id/radioBtnLab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/colorBackground"
-            android:text="Lab" />
+            android:text="@string/lab" />
 
         <RadioButton
             android:id="@+id/radioBtnOthers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/colorBackground"
-            android:text="Others" />
+            android:text="@string/Others" />
     </RadioGroup>
 
     <Button
@@ -120,7 +120,7 @@
         android:layout_height="30dp"
         android:layout_marginTop="48dp"
         android:background="?attr/colorBackground"
-        android:text="Tipul activitatii:"
+        android:text="@string/tipul_activitatii"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerJournal" />
