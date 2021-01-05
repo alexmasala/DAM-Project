@@ -3,13 +3,13 @@ package ro.ase.proiect_draft;
 import java.io.Serializable;
 
 public class Exam implements Serializable {
-    String idExam;
-    String numeMaterie;
-    int numarCredite;
-    String tipExam;
-    String dataSustinere;
-    String ora;
-    int durataOre;
+    private String idExam;
+    private String numeMaterie;
+    private int numarCredite;
+    private String tipExam;
+    private String dataSustinere;
+    private String ora;
+    private int durataOre;
 
     public Exam(String idExam, String numeMaterie, int numarCredite, String tipExam, String dataSustinere, String ora, int durataOre) {
         this.idExam = idExam;

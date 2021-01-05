@@ -48,7 +48,7 @@
     <string name="Others">Others</string>
     <string name="tipul_activitatii">Tipul activitatii:</string>
     <string name="rate_our_app">Rate our app</string>
-    <string name="statistics">Statistics</string>
+
 
     <string-array name="add_journal_note">
         <item>Favorite</item>

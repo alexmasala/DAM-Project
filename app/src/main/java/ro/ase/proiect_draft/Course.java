@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 public class Course implements Serializable {
 
-    String idCurs;
-    String idExam;
-    String numeCurs;
-    String prof;
-    String tipSeminar;
-    String serie;
+    private String idCurs;
+    private String idExam;
+    private String numeCurs;
+    private String prof;
+    private String tipSeminar;
+    private String serie;
 
     public Course(String idCurs, String numeCurs, String prof, String tipSeminar, String idSerie) {
         this.idCurs = idCurs;

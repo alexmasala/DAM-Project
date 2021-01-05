@@ -12,6 +12,7 @@ import static ro.ase.proiect_draft.SettingsFragment.SAVE_SWITCH;
 
 public class StatisticsActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
