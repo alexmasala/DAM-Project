@@ -5,25 +5,32 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText password, email, faculty, specialization, firstName, lastName;
     private Button signUp;
     private TextView existingUser;
-    private FirebaseDatabase firebaseUser;
-
+    private ProgressBar progbar;
+  //  private FirebaseDatabase firebaseUser;
+     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,54 +44,94 @@ public class RegisterActivity extends AppCompatActivity {
         specialization = findViewById(R.id.specialization);
         firstName = findViewById(R.id.firstName);
         lastName = findViewById(R.id.lastName);
-        firebaseUser = FirebaseDatabase.getInstance();
-
+        progbar =  findViewById(R.id.progressBar);
+        mAuth = FirebaseAuth.getInstance();
         //Firebase tabela user
-
-        //Creare user Adaugare user in firebase
-        signUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                User user = new User(email.getText().toString() , password.getText().toString());
-                salvareFireBase(user);
-                //Salvare in room tabela student
-
-                //Redirectionare LogIn Activity
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        //Baza de date room tabela studenti
-
-        existingUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+        //Creare si inserare user Adaugare user in firebase
+        //Functie de salvare in FireBase
     }
 
-    //Functie de salvare in FireBase
-    public  void salvareFireBase( User user){
-        DatabaseReference refFireBase = firebaseUser.getReference("Users");
-       // DatabaseReference refChild =  refFireBase.getRef("pagina-personala-student-default-rtdb");
-        refFireBase.keepSynced(true);
-        user.setIdUser(refFireBase.child("Users").push().getKey());
-        refFireBase.child("Users").child(user.getIdUser()).setValue(user);
-        Toast.makeText(RegisterActivity.this, "Registered User", Toast.LENGTH_SHORT).show();
-//        refFireBase.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                user.setIdUser(refFireBase.child("pagina-personala-student-default-rtdb").push().getKey());
-//                refFireBase.child("pagina-personala-student-default-rtdb").child(user.getIdUser()).setValue(user);
-//                Toast.makeText(RegisterActivity.this, "Registered User", Toast.LENGTH_SHORT).show();
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+    @Override
+    public void onClick(View v){
+        switch (v.getId()){
+            case R.id.AlreadyRegistered:
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+            case R.id.btnSignUp:
+                registerUser();
+                break;
+        }
+    }
+
+    private void registerUser(){
+        String emailEt = email.getText().toString().trim();
+        String passwordEt = password.getText().toString().trim();
+        String facultyEt = faculty.getText().toString().trim();
+        String specializtionEt = specialization.getText().toString().trim();
+        String firstNameEt = firstName.getText().toString().trim();
+        String lastNameEt = lastName.getText().toString().trim();
+
+        if(firstNameEt.isEmpty())
+            Toast.makeText(this, "This field is requried!",
+                    Toast.LENGTH_SHORT).show();
+
+        if(lastNameEt.isEmpty())
+            Toast.makeText(this, "This field is requried!",
+                    Toast.LENGTH_SHORT).show();
+
+        if(passwordEt.isEmpty())
+            Toast.makeText(this, "This field is requried!",
+                    Toast.LENGTH_SHORT).show();
+
+        if(facultyEt.isEmpty())
+            Toast.makeText(this, "This field is requried!",
+                    Toast.LENGTH_SHORT).show();
+
+        if(specializtionEt.isEmpty())
+            Toast.makeText(this, "This field is requried!",
+                    Toast.LENGTH_SHORT).show();
+
+        if(emailEt.isEmpty())
+            Toast.makeText(this, "This field is requried!",
+                    Toast.LENGTH_SHORT).show();
+
+        if(!Patterns.EMAIL_ADDRESS.matcher(emailEt).matches())
+            Toast.makeText(this, "Provide a valid email", 
+                    Toast.LENGTH_SHORT).show();
+
+        if(passwordEt.length() < 6)
+            Toast.makeText(this, "Password should be at least 6 characters!",
+                    Toast.LENGTH_SHORT).show();
+
+        progbar.setVisibility(View.VISIBLE);
+        //Verifica daca userul este deja inregistrat
+        mAuth.createUserWithEmailAndPassword(emailEt, passwordEt)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+              if(task.isSuccessful()){
+                  User user = new User(lastNameEt, firstNameEt, facultyEt, specializtionEt, emailEt, passwordEt);
+
+                  FirebaseDatabase.getInstance().getReference("Userd")
+                          .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                          .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                      @Override
+                      public void onComplete(@NonNull Task<Void> task) {
+                          if(task.isSuccessful()){
+                              Toast.makeText(RegisterActivity.this,
+                                       "User has been registered successfully!", Toast.LENGTH_SHORT).show();
+                              progbar.setVisibility(View.GONE);
+                          } else{
+                              Toast.makeText(RegisterActivity.this, "Faild to register!", Toast.LENGTH_SHORT).show();
+                              progbar.setVisibility(View.GONE);
+                          }
+                      }
+                  });
+              } else{
+                  Toast.makeText(RegisterActivity.this, "Faild to register!", Toast.LENGTH_SHORT).show();
+                  progbar.setVisibility(View.GONE);
+              }
+            }
+        });
     }
 }

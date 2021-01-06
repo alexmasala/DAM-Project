@@ -26,7 +26,7 @@
       android:id="@+id/faculty"
       android:layout_width="290dp"
       android:layout_height="62dp"
-      android:layout_marginTop="200dp"
+      android:layout_marginTop="184dp"
       android:background="#4AE6CBD5"
       android:ems="10"
       android:hint="Faculty"
@@ -35,7 +35,7 @@
       android:textColorHint="#FFFDFD"
       android:textSize="24sp"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.516"
+      app:layout_constraintHorizontal_bias="0.52"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/CreateAccount" />
 
@@ -95,12 +95,12 @@
       android:id="@+id/CreateAccount"
       android:layout_width="314dp"
       android:layout_height="56dp"
-      android:layout_marginTop="40dp"
+      android:layout_marginTop="4dp"
       android:text="Create new account"
       android:textColor="#E91E63"
       android:textSize="30sp"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.577"
+      app:layout_constraintHorizontal_bias="0.628"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
@@ -152,4 +152,17 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/Password"
       app:layout_constraintVertical_bias="0.181" />
+
+  <ProgressBar
+      android:id="@+id/progressBar"
+      style="?android:attr/progressBarStyle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="24dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.955"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/btnSignUp"
+      app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
