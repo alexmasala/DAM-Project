@@ -23,7 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
+public class RegisterActivity extends AppCompatActivity {
 
     private EditText password, email, faculty, specialization, firstName, lastName;
     private Button signUp;
@@ -49,19 +49,26 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         //Firebase tabela user
         //Creare si inserare user Adaugare user in firebase
         //Functie de salvare in FireBase
+
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registerUser();
+            }
+        });
     }
 
-    @Override
-    public void onClick(View v){
-        switch (v.getId()){
-            case R.id.AlreadyRegistered:
-                startActivity(new Intent(this, LoginActivity.class));
-                break;
-            case R.id.btnSignUp:
-                registerUser();
-                break;
-        }
-    }
+//    @Override
+//    public void onClick(View v){
+//        switch (v.getId()){
+//            case R.id.AlreadyRegistered:
+//                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+//                break;
+//            case R.id.btnSignUp:
+//
+//                break;
+//        }
+//    }
 
     private void registerUser(){
         String emailEt = email.getText().toString().trim();
@@ -103,7 +110,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             Toast.makeText(this, "Password should be at least 6 characters!",
                     Toast.LENGTH_SHORT).show();
 
-        progbar.setVisibility(View.VISIBLE);
+   //     progbar.setVisibility(View.VISIBLE);
         //Verifica daca userul este deja inregistrat
         mAuth.createUserWithEmailAndPassword(emailEt, passwordEt)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -112,7 +119,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
               if(task.isSuccessful()){
                   User user = new User(lastNameEt, firstNameEt, facultyEt, specializtionEt, emailEt, passwordEt);
 
-                  FirebaseDatabase.getInstance().getReference("Userd")
+                  FirebaseDatabase.getInstance().getReference("Users")
                           .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                           .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                       @Override
@@ -121,6 +128,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                               Toast.makeText(RegisterActivity.this,
                                        "User has been registered successfully!", Toast.LENGTH_SHORT).show();
                               progbar.setVisibility(View.GONE);
+                              startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                           } else{
                               Toast.makeText(RegisterActivity.this, "Faild to register!", Toast.LENGTH_SHORT).show();
                               progbar.setVisibility(View.GONE);
