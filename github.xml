@@ -1,0 +1,11 @@
+<application>
+  <component name="GithubAccounts">
+    <account id="bd9eeff9-b610-42cb-95c5-8f28577c7a18" name="alexmasala">
+      <server host="github.com" />
+    </account>
+  </component>
+  <component name="GithubSettings">
+    <option name="OPEN_IN_BROWSER_GIST" value="false" />
+    <option name="PRIVATE_GIST" value="false" />
+  </component>
+</application>
