@@ -1,17 +1,11 @@
 package ro.ase.proiect_draft;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
 import java.io.Serializable;
 import java.util.UUID;
 
-@Entity(tableName = "students")
 public class Student implements Serializable {
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
-    //    private String idStudent = UUID.randomUUID().toString();
+    private String idStudent = UUID.randomUUID().toString();
     private String nume;
     private String prenume;
     private String facultate;
@@ -19,8 +13,7 @@ public class Student implements Serializable {
     private String email;
     private String password;
 
-    public Student(int id, String nume, String prenume, String facultate, String specializare, String email, String password) {
-        this.id = id;
+    public Student(String nume, String prenume, String facultate, String specializare, String email, String password) {
         this.nume = nume;
         this.prenume = prenume;
         this.facultate = facultate;
@@ -29,17 +22,8 @@ public class Student implements Serializable {
         this.password = password;
     }
 
-//    public String getIdStudent() {
-//        return idStudent;
-//    }
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public String getIdStudent() {
+        return idStudent;
     }
 
     public String getNume() {
@@ -93,8 +77,7 @@ public class Student implements Serializable {
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
-                ", nume='" + nume + '\'' +
+                "nume='" + nume + '\'' +
                 ", prenume='" + prenume + '\'' +
                 ", facultate='" + facultate + '\'' +
                 ", specializare='" + specializare + '\'' +
@@ -102,4 +85,5 @@ public class Student implements Serializable {
                 ", password='" + password + '\'' +
                 '}';
     }
+
 }
