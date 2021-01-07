@@ -56,19 +56,15 @@ public class RegisterActivity extends AppCompatActivity {
                 registerUser();
             }
         });
-    }
 
-//    @Override
-//    public void onClick(View v){
-//        switch (v.getId()){
-//            case R.id.AlreadyRegistered:
-//                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-//                break;
-//            case R.id.btnSignUp:
-//
-//                break;
-//        }
-//    }
+        existingUser.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            }
+        });
+    }
 
     private void registerUser(){
         String emailEt = email.getText().toString().trim();
@@ -103,17 +99,17 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
 
         if(!Patterns.EMAIL_ADDRESS.matcher(emailEt).matches())
-            Toast.makeText(this, "Provide a valid email", 
+            Toast.makeText(this, "Provide a valid email",
                     Toast.LENGTH_SHORT).show();
 
         if(passwordEt.length() < 6)
             Toast.makeText(this, "Password should be at least 6 characters!",
                     Toast.LENGTH_SHORT).show();
 
-   //     progbar.setVisibility(View.VISIBLE);
+        progbar.setVisibility(View.VISIBLE);
         //Verifica daca userul este deja inregistrat
         mAuth.createUserWithEmailAndPassword(emailEt, passwordEt)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
               if(task.isSuccessful()){

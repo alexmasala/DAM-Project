@@ -26,19 +26,27 @@ public class ProfileFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    Button statistics;
+    Button statistics, logOut;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_profile, container, false);
         statistics = view.findViewById(R.id.btnStatistics);
+        logOut = view.findViewById(R.id.btnLogOut);
 
         statistics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent statInt = new Intent(getActivity(), StatisticsActivity.class);
                 startActivity(statInt);
+            }
+        });
+
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), LoginActivity.class));
             }
         });
 

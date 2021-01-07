@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -15,6 +17,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     private CheckBox rememberMe;
     SharedPreferences shp;
     SharedPreferences.Editor editor;
-    private FirebaseDatabase firebaseUser;
+    private FirebaseAuth authFireBase;
     private DataSnapshot dataSnapshot = null;
 
     @Override
@@ -42,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         email = findViewById(R.id.email3);
         passw = findViewById(R.id.password3);
         rememberMe = findViewById(R.id.chbRemember);
-        firebaseUser = FirebaseDatabase.getInstance();
+        authFireBase = FirebaseAuth.getInstance();
 
         //Autentificare utilizator
 
@@ -63,14 +70,9 @@ public class LoginActivity extends AppCompatActivity {
 
         login.setOnClickListener(new View.OnClickListener() {
             //Preluare date existente din firebase
-            //Verificarea datelor
-          //boolean semafor = loginUserAccount();
             @Override
             public void onClick(View v) {
-               // if(semafor){
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                //} else Toast.makeText(LoginActivity.this, "Log In Failed", Toast.LENGTH_SHORT).show();
+                loginUserAccount();
             }
         });
 
@@ -105,12 +107,10 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private boolean loginUserAccount(){
+    private void loginUserAccount() {
 
-        DatabaseReference ref = firebaseUser.getReference("pagina-personala-student-default-rtdb");
-        String emailEt = email.getText().toString();
-        String passwordEt = passw.getText().toString();
-        boolean sem = false;
+        String emailEt = email.getText().toString().trim();
+        String passwordEt = passw.getText().toString().trim();
 
         //Validare email, parola
         if (TextUtils.isEmpty(emailEt)) {
@@ -118,7 +118,6 @@ public class LoginActivity extends AppCompatActivity {
                     "Please enter email!!",
                     Toast.LENGTH_LONG)
                     .show();
-            return false;
         }
 
         if (TextUtils.isEmpty(passwordEt)) {
@@ -126,26 +125,40 @@ public class LoginActivity extends AppCompatActivity {
                     "Please enter password!!",
                     Toast.LENGTH_LONG)
                     .show();
-            return false;
         }
 
-        ref.child("table-user").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                dataSnapshot = snapshot;
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        User user = dataSnapshot.getValue(User.class);
-        if ((user.getEmail().equals(emailEt) && (user.getPassword().equals(passwordEt)))){
-            sem = true;
+        if(!Patterns.EMAIL_ADDRESS.matcher(emailEt).matches()){
+            Toast.makeText(this, "Provide a valid email",
+                    Toast.LENGTH_SHORT).show();
         }
 
-        return sem;
+        if(passwordEt.length() < 6)
+            Toast.makeText(this, "Password should be at least 6 characters!",
+                    Toast.LENGTH_SHORT).show();
+
+        authFireBase.signInWithEmailAndPassword(emailEt, passwordEt)
+                .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>(){
+
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            //Verificarea datelor
+                            FirebaseUser user =FirebaseAuth.getInstance().getCurrentUser();
+                            if(user.isEmailVerified()){
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            }else{
+                                user.sendEmailVerification();
+                                Toast.makeText(LoginActivity.this,
+                                        "Check your email to verify your account!", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }else{
+
+                            Toast.makeText(LoginActivity.this,
+                                    "Failed to login! Please check your credentials!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
     }
 }
