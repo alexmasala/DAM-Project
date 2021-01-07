@@ -74,39 +74,39 @@ public class RegisterActivity extends AppCompatActivity {
         String firstNameEt = firstName.getText().toString().trim();
         String lastNameEt = lastName.getText().toString().trim();
 
-        if(firstNameEt.isEmpty())
-            Toast.makeText(this, "This field is requried!",
-                    Toast.LENGTH_SHORT).show();
+//        if(firstNameEt.isEmpty())
+//            Toast.makeText(this, "This field is requried!",
+//                    Toast.LENGTH_SHORT).show();
+//
+//        if(lastNameEt.isEmpty())
+//            Toast.makeText(this, "This field is requried!",
+//                    Toast.LENGTH_SHORT).show();
+//
+//        if(passwordEt.isEmpty())
+//            Toast.makeText(this, "This field is requried!",
+//                    Toast.LENGTH_SHORT).show();
+//
+//        if(facultyEt.isEmpty())
+//            Toast.makeText(this, "This field is requried!",
+//                    Toast.LENGTH_SHORT).show();
+//
+//        if(specializtionEt.isEmpty())
+//            Toast.makeText(this, "This field is requried!",
+//                    Toast.LENGTH_SHORT).show();
+//
+//        if(emailEt.isEmpty())
+//            Toast.makeText(this, "This field is requried!",
+//                    Toast.LENGTH_SHORT).show();
+//
+//        if(!Patterns.EMAIL_ADDRESS.matcher(emailEt).matches())
+//            Toast.makeText(this, "Provide a valid email",
+//                    Toast.LENGTH_SHORT).show();
+//
+//        if(passwordEt.length() < 6)
+//            Toast.makeText(this, "Password should be at least 6 characters!",
+//                    Toast.LENGTH_SHORT).show();
 
-        if(lastNameEt.isEmpty())
-            Toast.makeText(this, "This field is requried!",
-                    Toast.LENGTH_SHORT).show();
-
-        if(passwordEt.isEmpty())
-            Toast.makeText(this, "This field is requried!",
-                    Toast.LENGTH_SHORT).show();
-
-        if(facultyEt.isEmpty())
-            Toast.makeText(this, "This field is requried!",
-                    Toast.LENGTH_SHORT).show();
-
-        if(specializtionEt.isEmpty())
-            Toast.makeText(this, "This field is requried!",
-                    Toast.LENGTH_SHORT).show();
-
-        if(emailEt.isEmpty())
-            Toast.makeText(this, "This field is requried!",
-                    Toast.LENGTH_SHORT).show();
-
-        if(!Patterns.EMAIL_ADDRESS.matcher(emailEt).matches())
-            Toast.makeText(this, "Provide a valid email",
-                    Toast.LENGTH_SHORT).show();
-
-        if(passwordEt.length() < 6)
-            Toast.makeText(this, "Password should be at least 6 characters!",
-                    Toast.LENGTH_SHORT).show();
-
-        progbar.setVisibility(View.VISIBLE);
+    //    progbar.setVisibility(View.VISIBLE);
         //Verifica daca userul este deja inregistrat
         mAuth.createUserWithEmailAndPassword(emailEt, passwordEt)
                 .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
