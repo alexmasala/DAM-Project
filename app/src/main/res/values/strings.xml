@@ -56,4 +56,11 @@
         <item>Remind Me Later</item>
     </string-array>
 
+    <string-array name="tip_examen">
+        <item>Test</item>
+        <item>Partial</item>
+        <item>Verificare</item>
+        <item>Examen</item>
+    </string-array>
+
 </resources>

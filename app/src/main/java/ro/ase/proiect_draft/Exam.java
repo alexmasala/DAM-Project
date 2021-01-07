@@ -7,6 +7,8 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+import java.util.Date;
+
 
 @Entity(tableName="examene", foreignKeys = @ForeignKey(entity = Student.class,
         parentColumns = "id", childColumns = "foreignIdStudent"), indices = @Index("foreignIdStudent"))
@@ -14,18 +16,18 @@ public class Exam implements Serializable {
 
 @PrimaryKey(autoGenerate = true)
     private int  id;
-    public int getIdExam() {
+    public int getId() {
         return id;
     }
 
-    public void setIdExam(int idExam) {
+    public void setId(int idExam) {
         this.id = idExam;
     }
 
     private String numeMaterie;
     private int numarCredite;
     private String tipExam;
-    private String dataSustinere;
+    private Date dataSustinere;
     private String ora;
     private int durataOre;
 
@@ -53,7 +55,8 @@ public class Exam implements Serializable {
 
 
 
-    public Exam(String numeMaterie, int numarCredite, String tipExam, String dataSustinere, String ora, int durataOre, int foreignIdStudent) {
+    public Exam(String numeMaterie, int numarCredite, String tipExam, Date dataSustinere,
+                String ora, int durataOre, int foreignIdStudent) {
         this.numeMaterie = numeMaterie;
         this.numarCredite = numarCredite;
         this.tipExam = tipExam;
@@ -64,7 +67,8 @@ public class Exam implements Serializable {
     }
 
     @Ignore
-    public Exam(int idExam, String numeMaterie, int numarCredite, String tipExam, String dataSustinere, String ora, int durataOre) {
+    public Exam(int idExam, String numeMaterie, int numarCredite, String tipExam, Date dataSustinere,
+                String ora, int durataOre) {
         this.id = idExam;
         this.numeMaterie = numeMaterie;
         this.numarCredite = numarCredite;
@@ -74,7 +78,15 @@ public class Exam implements Serializable {
         this.durataOre = durataOre;
     }
 
-
+    @Ignore
+    public Exam(String numeMaterie, int numarCredite, String tipExam, Date dataSustinere, String ora, int durataOre) {
+        this.numeMaterie = numeMaterie;
+        this.numarCredite = numarCredite;
+        this.tipExam = tipExam;
+        this.dataSustinere = dataSustinere;
+        this.ora = ora;
+        this.durataOre = durataOre;
+    }
 
     public String getNumeMaterie() {
         return numeMaterie;
@@ -100,11 +112,11 @@ public class Exam implements Serializable {
         this.tipExam = tipExam;
     }
 
-    public String getDataSustinere() {
+    public Date getDataSustinere() {
         return dataSustinere;
     }
 
-    public void setDataSustinere(String dataSustinere) {
+    public void setDataSustinere(Date dataSustinere) {
         this.dataSustinere = dataSustinere;
     }
 

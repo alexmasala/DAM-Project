@@ -36,11 +36,11 @@ public class Student implements Serializable {
         this.password = password;
     }
 
-    public long getIdStudent() {
+    public long getId() {
         return id;
     }
 
-    public void setIdStudent(long idStudent) {
+    public void setId(long idStudent) {
         this.id = idStudent;
     }
 

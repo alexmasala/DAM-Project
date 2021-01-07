@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ExamListActivity"></activity>
+        <activity android:name=".AddExamActivity"></activity>
+        <activity android:name=".ExamListActivity" />
         <activity android:name=".StatisticsActivity" />
         <activity android:name=".RateActivity" />
         <activity android:name=".RegisterActivity" />
