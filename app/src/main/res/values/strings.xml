@@ -49,6 +49,12 @@
     <string name="examens">examens</string>
     <string name="university_of_economic_studies">University of Economic Studies</string>
     <string name="log_out">Log Out</string>
+    <string name="editOra">Introduceti ora la care incepe examenul</string>
+    <string name="editdataSustinere">Introduceti data la care se sustine examenul</string>
+    <string name="editNumarCredit">Introduceti numarul de credite</string>
+    <string name="editNumeMaterie">Introduceti numele materiei</string>
+    <string name="editdurataOre">Introduceti durata desfasurarii examenului</string>
+    <string name="btnSaveExam">Save</string>
 
     <string-array name="add_journal_note">
         <item>Favorite</item>

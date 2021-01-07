@@ -1,31 +1,72 @@
 package ro.ase.proiect_draft;
 
-import java.io.Serializable;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.Index;
+import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+import java.util.Date;
+
+import static androidx.room.ForeignKey.CASCADE;
+
+@Entity(tableName = "exams", foreignKeys = @ForeignKey(entity = Student.class, parentColumns = "id",
+        childColumns = "idStudent", onDelete = CASCADE), indices = @Index("idStudent"))
 public class Exam implements Serializable {
-    private String idExam;
+
+    //se genereaza automat pt ca e cheie primara si nu mai trb trecuta in constructor
+    @PrimaryKey(autoGenerate = true)
+    private int idExam;
+
     private String numeMaterie;
     private int numarCredite;
-    private String tipExam;
-    private String dataSustinere;
+    //    private String tipExam;
+    private Date dataSustinere;
     private String ora;
-    private int durataOre;
+    private String durataOre;
 
-    public Exam(String idExam, String numeMaterie, int numarCredite, String tipExam, String dataSustinere, String ora, int durataOre) {
-        this.idExam = idExam;
+    private  int idStudent;
+
+    //we must ignore the default constructor
+    public Exam(){
+
+    }
+
+    //nu stergem cosntructorul pt ca il mai folosim in alte activitati
+    public Exam(String numeMaterie, int numarCredite, Date dataSustinere, String ora, String durataOre) {
         this.numeMaterie = numeMaterie;
         this.numarCredite = numarCredite;
-        this.tipExam = tipExam;
+//        this.tipExam = tipExam;
         this.dataSustinere = dataSustinere;
         this.ora = ora;
         this.durataOre = durataOre;
     }
 
-    public String getIdExam() {
+    //constructorul apelat de room
+    public Exam(String numeMaterie, int numarCredite, Date dataSustinere, String ora, String durataOre, int idStudent) {
+        this.numeMaterie = numeMaterie;
+        this.numarCredite = numarCredite;
+//        this.tipExam = tipExam;
+        this.dataSustinere = dataSustinere;
+        this.ora = ora;
+        this.durataOre = durataOre;
+        this.idStudent = idStudent;
+    }
+
+    public int getIdStudent() {
+        return idStudent;
+    }
+
+    public void setIdStudent(int idStudent) {
+        this.idStudent = idStudent;
+    }
+
+    public int getIdExam() {
         return idExam;
     }
 
-    public void setIdExam(String idExam) {
+    public void setIdExam(int idExam) {
         this.idExam = idExam;
     }
 
@@ -45,19 +86,19 @@ public class Exam implements Serializable {
         this.numarCredite = numarCredite;
     }
 
-    public String getTipExam() {
-        return tipExam;
-    }
+//    public String getTipExam() {
+//        return tipExam;
+//    }
+//
+//    public void setTipExam(String tipExam) {
+//        this.tipExam = tipExam;
+//    }
 
-    public void setTipExam(String tipExam) {
-        this.tipExam = tipExam;
-    }
-
-    public String getDataSustinere() {
+    public Date getDataSustinere() {
         return dataSustinere;
     }
 
-    public void setDataSustinere(String dataSustinere) {
+    public void setDataSustinere(Date dataSustinere) {
         this.dataSustinere = dataSustinere;
     }
 
@@ -69,24 +110,25 @@ public class Exam implements Serializable {
         this.ora = ora;
     }
 
-    public int getDurataOre() {
+    public String getDurataOre() {
         return durataOre;
     }
 
-    public void setDurataOre(int durataOre) {
+    public void setDurataOre(String durataOre) {
         this.durataOre = durataOre;
     }
 
     @Override
     public String toString() {
         return "Exam{" +
-                "idExam='" + idExam + '\'' +
+                "idExam=" + idExam +
                 ", numeMaterie='" + numeMaterie + '\'' +
                 ", numarCredite=" + numarCredite +
-                ", tipExam='" + tipExam + '\'' +
+//                ", tipExam='" + tipExam + '\'' +
                 ", dataSustinere='" + dataSustinere + '\'' +
                 ", ora='" + ora + '\'' +
                 ", durataOre=" + durataOre +
+                ", idStudent=" + idStudent +
                 '}';
     }
 }
