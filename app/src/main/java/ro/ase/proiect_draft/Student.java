@@ -1,19 +1,33 @@
 package ro.ase.proiect_draft;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 import java.util.UUID;
 
+@Entity(tableName = "studenti")
 public class Student implements Serializable {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name="id")
+    private long id;
 
-    private String idStudent = UUID.randomUUID().toString();
+    @ColumnInfo(name = "nume")
     private String nume;
+    @ColumnInfo(name = "prenume")
     private String prenume;
+    @ColumnInfo(name = "facultate")
     private String facultate;
+    @ColumnInfo(name = "specializare")
     private String specializare;
+    @ColumnInfo(name = "email")
     private String email;
+    @ColumnInfo(name = "password")
     private String password;
 
-    public Student(String nume, String prenume, String facultate, String specializare, String email, String password) {
+    public Student(long idStudent, String nume, String prenume, String facultate, String specializare, String email, String password) {
+       this.id = idStudent;
         this.nume = nume;
         this.prenume = prenume;
         this.facultate = facultate;
@@ -22,8 +36,12 @@ public class Student implements Serializable {
         this.password = password;
     }
 
-    public String getIdStudent() {
-        return idStudent;
+    public long getIdStudent() {
+        return id;
+    }
+
+    public void setIdStudent(long idStudent) {
+        this.id = idStudent;
     }
 
     public String getNume() {
@@ -77,7 +95,8 @@ public class Student implements Serializable {
     @Override
     public String toString() {
         return "Student{" +
-                "nume='" + nume + '\'' +
+                "idStudent=" + id +
+                ", nume='" + nume + '\'' +
                 ", prenume='" + prenume + '\'' +
                 ", facultate='" + facultate + '\'' +
                 ", specializare='" + specializare + '\'' +
@@ -85,5 +104,4 @@ public class Student implements Serializable {
                 ", password='" + password + '\'' +
                 '}';
     }
-
 }

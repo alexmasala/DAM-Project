@@ -1,9 +1,27 @@
 package ro.ase.proiect_draft;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.Index;
+import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
+@Entity(tableName="examene", foreignKeys = @ForeignKey(entity = Student.class,
+        parentColumns = "id", childColumns = "foreignIdStudent"), indices = @Index("foreignIdStudent"))
 public class Exam implements Serializable {
-    private String idExam;
+
+@PrimaryKey(autoGenerate = true)
+    private int  id;
+    public int getIdExam() {
+        return id;
+    }
+
+    public void setIdExam(int idExam) {
+        this.id = idExam;
+    }
+
     private String numeMaterie;
     private int numarCredite;
     private String tipExam;
@@ -11,8 +29,43 @@ public class Exam implements Serializable {
     private String ora;
     private int durataOre;
 
-    public Exam(String idExam, String numeMaterie, int numarCredite, String tipExam, String dataSustinere, String ora, int durataOre) {
-        this.idExam = idExam;
+
+    @ColumnInfo(name="foreignIdStudent")
+    private int foreignIdStudent;
+
+    public int getForeignIdStudent() {
+        return foreignIdStudent;
+    }
+    public void setForeignIdStudent(int foreignIdStudent) {
+        this.foreignIdStudent = foreignIdStudent;
+    }
+
+    @Ignore
+    private String uid;
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+
+
+    public Exam(String numeMaterie, int numarCredite, String tipExam, String dataSustinere, String ora, int durataOre, int foreignIdStudent) {
+        this.numeMaterie = numeMaterie;
+        this.numarCredite = numarCredite;
+        this.tipExam = tipExam;
+        this.dataSustinere = dataSustinere;
+        this.ora = ora;
+        this.durataOre = durataOre;
+        this.foreignIdStudent = foreignIdStudent;
+    }
+
+    @Ignore
+    public Exam(int idExam, String numeMaterie, int numarCredite, String tipExam, String dataSustinere, String ora, int durataOre) {
+        this.id = idExam;
         this.numeMaterie = numeMaterie;
         this.numarCredite = numarCredite;
         this.tipExam = tipExam;
@@ -21,13 +74,7 @@ public class Exam implements Serializable {
         this.durataOre = durataOre;
     }
 
-    public String getIdExam() {
-        return idExam;
-    }
 
-    public void setIdExam(String idExam) {
-        this.idExam = idExam;
-    }
 
     public String getNumeMaterie() {
         return numeMaterie;
@@ -80,7 +127,7 @@ public class Exam implements Serializable {
     @Override
     public String toString() {
         return "Exam{" +
-                "idExam='" + idExam + '\'' +
+                "idExam='" + id + '\'' +
                 ", numeMaterie='" + numeMaterie + '\'' +
                 ", numarCredite=" + numarCredite +
                 ", tipExam='" + tipExam + '\'' +
