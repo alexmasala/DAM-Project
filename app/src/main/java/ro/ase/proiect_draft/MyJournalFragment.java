@@ -36,6 +36,7 @@ public class MyJournalFragment extends Fragment {
 
 
     private FloatingActionButton floatingActionButton;
+    Button btnShowGraph;
     private Intent intent;
     public static final int REQUEST_CODE = 200;
 
@@ -77,11 +78,11 @@ public class MyJournalFragment extends Fragment {
         });
 
         //BarChart Tip Notita
-        Button btnShowGraph = (Button) view.findViewById(R.id.buttonShowGraph);
+        btnShowGraph = (Button) view.findViewById(R.id.buttonShowGraph);
         btnShowGraph.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList<JournalNote> journalList = new ArrayList<>();
+                ArrayList<JournalNote> journalList = new ArrayList<JournalNote>();
                 for (JournalNote journalNote : notesList)
                     journalList.add(journalNote);
 
