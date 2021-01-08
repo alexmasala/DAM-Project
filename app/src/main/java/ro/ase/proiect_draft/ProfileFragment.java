@@ -26,7 +26,7 @@ public class ProfileFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    Button showExams;
+
     Button statistics, logOut;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,16 +35,6 @@ public class ProfileFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_profile, container, false);
         statistics = view.findViewById(R.id.btnStatistics);
         logOut = view.findViewById(R.id.btnLogOut);
-
-        showExams = view.findViewById(R.id.btnShowExam);
-        showExams.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent examIntent = new Intent(getActivity(), ExamListActivity.class);
-                startActivity(examIntent);
-               // startActivity(new Intent(getActivity().getApplicationContext(), ExamListActivity.class));
-            }
-        });
 
 
         statistics.setOnClickListener(new View.OnClickListener() {

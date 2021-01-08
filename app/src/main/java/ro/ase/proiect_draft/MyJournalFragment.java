@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,6 +76,22 @@ public class MyJournalFragment extends Fragment {
             }
         });
 
+        //BarChart Tip Notita
+        Button btnShowGraph = (Button) view.findViewById(R.id.buttonShowGraph);
+        btnShowGraph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<JournalNote> journalList = new ArrayList<>();
+                for (JournalNote journalNote : notesList)
+                    journalList.add(journalNote);
+
+                Intent intent1 = new Intent( getActivity().getApplicationContext() , BarChart_Journal_Activity.class);
+                intent1.putExtra("journalList",journalList);
+                startActivity(intent1);
+            }
+        });
+
+        //Modifica notita
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {

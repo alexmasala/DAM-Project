@@ -13,6 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".BarChart_Journal_Activity"></activity>
+
         <activity android:name=".AddExamActivity"></activity>
         <activity android:name=".ExamListActivity" />
         <activity android:name=".StatisticsActivity" />

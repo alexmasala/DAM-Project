@@ -9,7 +9,7 @@
         android:icon="@drawable/calendar"
         android:title="@string/syllabus"/>
 
-    <item android:id="@+id/menuExamens"
+    <item android:id="@+id/menuExam"
         android:icon="@drawable/exam"
         android:title="@string/examens" />
 

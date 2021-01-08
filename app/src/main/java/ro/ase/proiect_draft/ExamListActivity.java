@@ -40,9 +40,26 @@ public class ExamListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exam_list);
 
-        initComponents();
+        lvExam = findViewById(R.id.lv_exams);
+        fabAddExams= (FloatingActionButton) findViewById(R.id.fabAddExam);
+
+        addAdapter();
+
+        fabAddExams.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( ExamListActivity.this, AddExamActivity.class);
+                startActivityForResult(intent, ADD_EXAM_REQUEST_CODE);
+            }
+        });
+
+//        lvExam.setOnItemClickListener(updateExamEventListener());
+//        lvExam.setOnItemLongClickListener(deleteExamEventListener());
+        //initComponents();
         examService = new ExamService(getApplicationContext());
         examService.getAll(getAllCallback());
+
+
 
     }
 
@@ -128,45 +145,19 @@ public class ExamListActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        lvExam = findViewById(R.id.lv_exams);
-        fabAddExams= findViewById(R.id.fabAddExam);
-
-        addAdapter();
-        fabAddExams.setOnClickListener(addExamEventListener());
-
-        lvExam.setOnItemClickListener(updateExamEventListener());
-        lvExam.setOnItemLongClickListener(deleteExamEventListener());
+//        lvExam = findViewById(R.id.lv_exams);
+//        fabAddExams= findViewById(R.id.fabAddExam);
+//
+//        addAdapter();
+//        //fabAddExams.setOnClickListener(addExamEventListener());
+//
+//        lvExam.setOnItemClickListener(updateExamEventListener());
+//        lvExam.setOnItemLongClickListener(deleteExamEventListener());
 
         //sharedPreferences = getSharedPreferences(ProfileActivity.PROFILE_SHARED, MODE_PRIVATE);
         //displayMessage();
     }
 
-//    private void displayMessage() {
-//        String name = sharedPreferences.getString(ProfileActivity.NAME, null);
-//        if (name != null) {
-//            Toast.makeText(getApplicationContext(),
-//                    getString(R.string.display_param_message, name),
-//                    Toast.LENGTH_SHORT)
-//                    .show();
-//
-//            AlertDialog dialog = new AlertDialog.Builder(MainActivity4.this)
-//                    .setTitle(R.string.main_my_title)
-//                    .setMessage(getString(R.string.display_param_message, name))
-//                    .create();
-//            dialog.show();
-//        }
-//    }
-
-//    private View.OnClickListener profileEventListener() {
-//        return new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(),
-//                        ProfileActivity.class);
-//                startActivity(intent);
-//            }
-//        };
-//    }
 
     private AdapterView.OnItemLongClickListener deleteExamEventListener() {
         return new AdapterView.OnItemLongClickListener() {
@@ -182,6 +173,7 @@ public class ExamListActivity extends AppCompatActivity {
         };
     }
 
+    //Functie de update listview
     private AdapterView.OnItemClickListener updateExamEventListener() {
         return new AdapterView.OnItemClickListener() {
             @Override
@@ -199,15 +191,15 @@ public class ExamListActivity extends AppCompatActivity {
         };
     }
 
-    private View.OnClickListener addExamEventListener() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent( ExamListActivity.this, AddExamActivity.class);
-                startActivityForResult(intent, ADD_EXAM_REQUEST_CODE);
-            }
-        };
-    }
+//    private View.OnClickListener addExamEventListener() {
+//        return new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent( ExamListActivity.this, AddExamActivity.class);
+//                startActivityForResult(intent, ADD_EXAM_REQUEST_CODE);
+//            }
+//        };
+//    }
 
     private void addAdapter() {
 //        ArrayAdapter<User> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, expens);
@@ -221,4 +213,5 @@ public class ExamListActivity extends AppCompatActivity {
 //        ArrayAdapter<User> adapter = (ArrayAdapter<User>) lvExpenses.getAdapter();
         adapter.notifyDataSetChanged();
     }
+
 }

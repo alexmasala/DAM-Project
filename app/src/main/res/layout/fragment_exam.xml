@@ -21,8 +21,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.008" />
-    //app:layout_constraintBottom_toTopOf="@+id/btnShowExam"
 
+    <Button
+        android:id="@+id/btnShowExam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Exams"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.203" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -50,6 +50,7 @@
     <string name="log_out">Log Out</string>
     <string name="failedMessage">Nu s-a putut insera</string>
     <string name="Rate_Us">Rate US</string>
+    <string name="salvare_grafic">Salvare BarChart</string>
 
     <string-array name="add_journal_note">
         <item>Favorite</item>

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?attr/colorBackground"
     tools:context=".MyJournalFragment">
 
     <ListView
@@ -40,6 +41,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/space"
             app:srcCompat="@android:drawable/ic_input_add" />
+
+        <Button
+            android:id="@+id/buttonShowGraph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/salvare_grafic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/space"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

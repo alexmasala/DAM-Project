@@ -24,20 +24,43 @@ public class AddExamActivity extends AppCompatActivity {
 
     private Intent intent;
     public static final String ADD_EXAM = "addExam";
+    EditText etnumeMaterie, etnrCredite, etdataSustinere, etoraSustinere, etdurataExamen;
+    Spinner spinner;
+    Button save;
+
+    private void initComponents() {
+        etnumeMaterie = findViewById(R.id.editNumeMaterie);
+        etnrCredite = findViewById(R.id.editTextNumarCredite);
+        etdataSustinere= findViewById(R.id.editTextDate);
+        etoraSustinere = findViewById(R.id.editTextOra);
+        etdurataExamen = findViewById(R.id.editTextDurataExam);
+
+        save = findViewById(R.id.buttonSave);
+
+        spinner = findViewById(R.id.spinnerGenExam);
+
+        ArrayAdapter<CharSequence> adaptor = ArrayAdapter.createFromResource(this, R.array.tip_examen,
+                android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(adaptor);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_exam);
 
-        final Spinner spinner = findViewById(R.id.spinnerGenExam);
+        //initComponents();
+        spinner = findViewById(R.id.spinnerGenExam);
 
-        final EditText etnumeMaterie = findViewById(R.id.editNumeMaterie);
-        final EditText etnrCredite = findViewById(R.id.editTextNumarCredite);
-        final EditText etdataSustinere= findViewById(R.id.editTextDate);
-        final EditText etoraSustinere = findViewById(R.id.editTextOra);
-        final EditText etdurataExamen = findViewById(R.id.editTextDurataExam);
+        etnumeMaterie = findViewById(R.id.editNumeMaterie);
+        etnrCredite = findViewById(R.id.editTextNumarCredite);
+        etdataSustinere= findViewById(R.id.editTextDate);
+        etoraSustinere = findViewById(R.id.editTextOra);
+        etdurataExamen = findViewById(R.id.editTextDurataExam);
 
+        save = (Button)findViewById(R.id.btnSaveExam);
+        spinner = findViewById(R.id.spinnerGenExam);
 
         ArrayAdapter<CharSequence> adaptor = ArrayAdapter.createFromResource(this, R.array.tip_examen,
                 android.R.layout.simple_spinner_dropdown_item);
@@ -75,8 +98,6 @@ public class AddExamActivity extends AppCompatActivity {
                 }
         }
 
-
-        Button save = findViewById(R.id.buttonSave);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,8 +146,6 @@ public class AddExamActivity extends AppCompatActivity {
 
                         Exam examInserat=new Exam(materie, numarCrdite, tip, data, ora, durata);
 
-
-
                         examInserat.setForeignIdStudent((int)stud.getId());
 
                         SharedPreferences dateExamen=getSharedPreferences("dateExam",0);
@@ -160,4 +179,5 @@ public class AddExamActivity extends AppCompatActivity {
             }
         });
     }
+
 }
