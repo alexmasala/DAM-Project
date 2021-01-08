@@ -1,5 +1,7 @@
 package ro.ase.proiect_draft;
 
+import android.os.Parcelable;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;

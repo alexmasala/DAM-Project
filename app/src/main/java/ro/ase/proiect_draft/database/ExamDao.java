@@ -28,9 +28,11 @@ public interface ExamDao {
 
     @Query("Delete from examene")
     int deleteAll();
+
     @Query("select * from examene where tipExam=:tipExam")
     List<Exam> getAllByCategory(String tipExam);
     @Update
+
     int update(Exam exam);
     @Query("Delete from examene where id = :id1")
     void deleteWhere(long id1);

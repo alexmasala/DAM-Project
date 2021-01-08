@@ -131,7 +131,7 @@ public class AddExamActivity extends AppCompatActivity {
                         String ora = etoraSustinere.getText().toString();
                         Date data = new Date(etdataSustinere.getText().toString());
                         int numarCrdite = Integer.parseInt(etnrCredite.getText().toString());
-                        int durata = Integer.parseInt(etdataSustinere.getText().toString());
+                        int durata = Integer.parseInt(etdurataExamen.getText().toString());
                         String tip = spinner.getSelectedItem().toString().toUpperCase();
 
 

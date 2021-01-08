@@ -20,7 +20,8 @@ public class SyllabusAdapter extends ArrayAdapter<Syllabus> {
     private LayoutInflater layoutInflater;
 
 
-    public SyllabusAdapter(@NonNull Context context, int resource, List<Syllabus> syllabusList, LayoutInflater layoutInflater) {
+    public SyllabusAdapter(@NonNull Context context, int resource,
+                           List<Syllabus> syllabusList, LayoutInflater layoutInflater) {
         super(context, resource, syllabusList);
         this.context = context;
         this.resource = resource;

@@ -54,17 +54,17 @@ public class LoginActivity extends AppCompatActivity {
         //Autentificare utilizator
 
         //Cand aplicatia se deschide va cauta fisierul sharedpreferances
-        SharedPreferences shp = getSharedPreferences( " checkbox", MODE_PRIVATE);
-        String checkbox = shp.getString("remember", "");
-
-        if(checkbox.equals("true")){
-
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-        }else if(checkbox.equals("false")){
-
-            Toast.makeText(this, "Please log in", Toast.LENGTH_SHORT).show();
-        }
+//        SharedPreferences shp = getSharedPreferences( " checkbox", MODE_PRIVATE);
+//        String checkbox = shp.getString("remember", "");
+//
+//        if(checkbox.equals("true")){
+//
+//            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//            startActivity(intent);
+//        }else if(checkbox.equals("false")){
+//
+//            Toast.makeText(this, "Please log in", Toast.LENGTH_SHORT).show();
+//        }
 
 
 
@@ -76,27 +76,27 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        rememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if( compoundButton.isChecked()){
-
-                    SharedPreferences shp= getSharedPreferences("checkbox", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = shp.edit();
-                    editor.putString("rememberMe", "true");
-                    editor.apply();
-                    Toast.makeText(LoginActivity.this, "Checked", Toast.LENGTH_SHORT).show();
-
-                } else if( !compoundButton.isChecked()){
-
-                    SharedPreferences shp= getSharedPreferences("checkbox", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = shp.edit();
-                    editor.putString("rememberMe", "false");
-                    editor.apply();
-                    Toast.makeText(LoginActivity.this, "Unchecked", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+//        rememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+//                if( compoundButton.isChecked()){
+//
+//                    SharedPreferences shp= getSharedPreferences("checkbox", MODE_PRIVATE);
+//                    SharedPreferences.Editor editor = shp.edit();
+//                    editor.putString("rememberMe", "true");
+//                    editor.apply();
+//                    Toast.makeText(LoginActivity.this, "Checked", Toast.LENGTH_SHORT).show();
+//
+//                } else if( !compoundButton.isChecked()){
+//
+//                    SharedPreferences shp= getSharedPreferences("checkbox", MODE_PRIVATE);
+//                    SharedPreferences.Editor editor = shp.edit();
+//                    editor.putString("rememberMe", "false");
+//                    editor.apply();
+//                    Toast.makeText(LoginActivity.this, "Unchecked", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
 
         newHere.setOnClickListener(new View.OnClickListener() {
             @Override
