@@ -58,7 +58,7 @@ public class ExamService {
                 if (id == -1) {
                     return null;
                 }
-                exam.setIdExam((int) id);
+                exam.setId((int) id);
                 return exam;
             }
         };

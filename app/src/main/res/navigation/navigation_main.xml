@@ -18,11 +18,6 @@
         android:label="My Journal"
         tools:layout="@layout/fragment_my_journal" />
 
-    <fragment
-        android:id="@+id/menuCourses"
-        android:name="ro.ase.proiect_draft.CoursesFragment"
-        android:label="My Courses"
-        tools:layout="@layout/fragment_courses" />
 
     <fragment
         android:id="@+id/menuSyllabus"

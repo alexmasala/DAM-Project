@@ -26,8 +26,9 @@ public class Student implements Serializable {
     @ColumnInfo(name = "password")
     private String password;
 
-    public Student(long idStudent, String nume, String prenume, String facultate, String specializare, String email, String password) {
-       this.id = idStudent;
+    public Student(long id, String nume, String prenume,
+                   String facultate, String specializare, String email, String password) {
+        this.id = id;
         this.nume = nume;
         this.prenume = prenume;
         this.facultate = facultate;

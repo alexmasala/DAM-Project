@@ -18,7 +18,8 @@ public class JournalAdapter extends ArrayAdapter<JournalNote> {
     private List<JournalNote> notesList;
     private LayoutInflater layoutInflater;
 
-    public JournalAdapter(@NonNull Context context, int resource, List<JournalNote> notesList, LayoutInflater layoutInflater) {
+    public JournalAdapter(@NonNull Context context, int resource,
+                          List<JournalNote> notesList, LayoutInflater layoutInflater) {
         super(context, resource, notesList);
         this.context = context;
         this.resource = resource;

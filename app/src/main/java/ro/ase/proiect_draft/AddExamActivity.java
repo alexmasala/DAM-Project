@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,7 +23,7 @@ import ro.ase.proiect_draft.database.DatabaseManager;
 public class AddExamActivity extends AppCompatActivity {
 
     private Intent intent;
-    public static final String ADD_EXAM = "adaugaExamen";
+    public static final String ADD_EXAM = "addExam";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +58,9 @@ public class AddExamActivity extends AppCompatActivity {
         final  String DATE_FORMAT = "dd/MM/yyyy";
         intent = getIntent();
 
-        if(intent.hasExtra(EditExamActivity.EDIT_EXAM))
+        if(intent.hasExtra(ExamListActivity.EDIT_EXAM))
         {
-            Exam ex = (Exam)intent.getSerializableExtra(EditExamActivity.EDIT_EXAM);
+            Exam ex = (Exam)intent.getSerializableExtra(ExamListActivity.EDIT_EXAM);
             etnumeMaterie.setText(ex.getNumeMaterie());
             etoraSustinere.setText(ex.getOra());
             etdataSustinere.setText(new SimpleDateFormat(DATE_FORMAT, Locale.US).format(ex.getDataSustinere()));
@@ -88,16 +86,17 @@ public class AddExamActivity extends AppCompatActivity {
                 else
                 if (etoraSustinere.getText()==null || etoraSustinere.getText().toString().isEmpty() ||
                         etoraSustinere.getText().toString().trim().isEmpty())
-                    Toast.makeText(getApplicationContext(), "Introduceti autor!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),
+                            "Introduceti ora sustinerii examenului!", Toast.LENGTH_LONG).show();
                 else
                 if (etdataSustinere.getText().toString().isEmpty())
-                    etdataSustinere.setError("Introduceti data!");
+                    etdataSustinere.setError("Introduceti data sustinerii examenului!");
                 else
                 if (etnrCredite.getText().toString().isEmpty())
-                    etnrCredite.setError("Introduceti pretul!");
+                    etnrCredite.setError("Introduceti numarul de credite!");
                 else
                 if (etdurataExamen.getText().toString().isEmpty())
-                    etdurataExamen.setError("Introduceti pretul!");
+                    etdurataExamen.setError("Introduceti durata examenului!");
 
                 else
                 {
@@ -117,10 +116,12 @@ public class AddExamActivity extends AppCompatActivity {
 
 
                         DatabaseManager databaseManager = DatabaseManager.getInstance(getApplicationContext());
+
                         Random random=new Random();
-                        Student stud=new Student(random.nextInt(49)+1,"Alexandru","Andra",
-                                "Csie",
-                                "Ie","andra@yahoo.com","vampir");
+                        long randomNumber = (long) random.nextInt(50);
+                        Student stud=new Student( randomNumber,"Alexandru","Andra",
+                                "Csie", "Ie",
+                                "andra@yahoo.com","vampir");
 
                         Exam examInserat=new Exam(materie, numarCrdite, tip, data, ora, durata);
 

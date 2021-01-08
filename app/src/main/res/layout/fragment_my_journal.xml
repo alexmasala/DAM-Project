@@ -6,13 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MyJournalFragment">
 
-    <!--    <TextView-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="My Journal"-->
-    <!--        android:layout_gravity="center"-->
-    <!--        android:textSize="20sp"/>-->
-
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"

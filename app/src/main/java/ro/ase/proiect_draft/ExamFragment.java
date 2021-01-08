@@ -12,15 +12,15 @@ import android.widget.Button;
 
 public class ExamFragment extends Fragment {
 
-    Button showExams;
+//    Button showExams;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_exam, container, false);
 
-        showExams = getActivity().findViewById(R.id.btnShowExam);
-        startActivity(new Intent(getActivity().getApplicationContext(), ExamListActivity.class));
+//        showExams = view.findViewById(R.id.btnShowExam);
+//        startActivity(new Intent(getActivity().getApplicationContext(), ExamListActivity.class));
 
         return view;
     }

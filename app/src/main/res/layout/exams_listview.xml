@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvMaterie"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorBackground"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tcNrCredite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tcNrCredite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTipExam"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorBackground"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvMaterie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDataSustinere"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorBackground"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvMaterie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvOra"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorBackground"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvMaterie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDurataExamen"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorBackground"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvMaterie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

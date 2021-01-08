@@ -58,7 +58,7 @@ public class StudentService {
                 if (id == -1) {
                     return null;
                 }
-                stud.setIdStudent(id);
+                stud.setId(id);
                 return stud;
             }
         };

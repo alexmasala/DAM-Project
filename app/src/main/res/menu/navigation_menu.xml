@@ -5,14 +5,6 @@
     android:icon="@drawable/profile"
     android:title="@string/profile" />
 
-    <item android:id="@+id/menuMyJournal"
-        android:icon="@drawable/myjournal"
-        android:title="@string/myJournal" />
-
-    <item android:id="@+id/menuCourses"
-        android:icon="@drawable/courses"
-        android:title="@string/courses" />
-
     <item android:id="@+id/menuSyllabus"
         android:icon="@drawable/calendar"
         android:title="@string/syllabus"/>
@@ -20,6 +12,10 @@
     <item android:id="@+id/menuExamens"
         android:icon="@drawable/exam"
         android:title="@string/examens" />
+
+    <item android:id="@+id/menuMyJournal"
+        android:icon="@drawable/myjournal"
+        android:title="@string/myJournal" />
 
     <item android:title="@string/others">
 
