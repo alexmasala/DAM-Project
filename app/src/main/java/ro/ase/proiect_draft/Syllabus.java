@@ -20,14 +20,6 @@ public class Syllabus implements Serializable{
     private String durata;
     private String profesor;
 
-//    // variable to hold context
-////    private Context context;
-////
-//////save the context recieved via constructor in a local variable
-////    public Syllabus(Context context){
-////        this.context=context;
-////    }
-
     public Syllabus(int nr, int capacitate, String sef) {
         this.nr = nr;
         this.capacitate = capacitate;

@@ -48,8 +48,6 @@ public class SettingsFragment extends Fragment {
                 storeToSharedPreferences();
             }
         });
-
-
         return view;
     }
 

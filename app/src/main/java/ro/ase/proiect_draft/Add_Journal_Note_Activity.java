@@ -36,6 +36,11 @@ public class Add_Journal_Note_Activity extends AppCompatActivity
     {
 
         super.onCreate(savedInstanceState);
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            setTheme(R.style.AppThemeDark);
+        } else {
+            setTheme(R.style.AppTheme);
+        }
         setContentView(R.layout.activity_add__journal__note_);
 
 

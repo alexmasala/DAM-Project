@@ -23,7 +23,6 @@ import static ro.ase.proiect_draft.SettingsFragment.SAVE_SWITCH;
 
 public class Add_Syllabus_Activity extends AppCompatActivity {
 
-    public static final String ADD_SYLLABUS = "adaugaSyllabus";
     List<Syllabus> syllabusList = new ArrayList<Syllabus>();
     private ListView listView;
 
@@ -62,7 +61,6 @@ public class Add_Syllabus_Activity extends AppCompatActivity {
             }
         };
         try {
-//            extractSyllabusJSON.execute(new URL("https://pastebin.com/raw/MbbLUNsA"));
             extractSyllabusJSON.execute(new URL("https://pastebin.com/raw/xniuuyZX"));
 
         } catch (MalformedURLException e) {

@@ -33,11 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText email, passw;
     private Button login;
     private TextView newHere;
-    private CheckBox rememberMe;
-    SharedPreferences shp;
-    SharedPreferences.Editor editor;
     private FirebaseAuth authFireBase;
-    private DataSnapshot dataSnapshot = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,25 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         newHere = findViewById(R.id.newHere);
         email = findViewById(R.id.email3);
         passw = findViewById(R.id.password3);
-        rememberMe = findViewById(R.id.chbRemember);
         authFireBase = FirebaseAuth.getInstance();
-
-        //Autentificare utilizator
-
-        //Cand aplicatia se deschide va cauta fisierul sharedpreferances
-//        SharedPreferences shp = getSharedPreferences( " checkbox", MODE_PRIVATE);
-//        String checkbox = shp.getString("remember", "");
-//
-//        if(checkbox.equals("true")){
-//
-//            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//            startActivity(intent);
-//        }else if(checkbox.equals("false")){
-//
-//            Toast.makeText(this, "Please log in", Toast.LENGTH_SHORT).show();
-//        }
-
-
 
         login.setOnClickListener(new View.OnClickListener() {
             //Preluare date existente din firebase
@@ -75,28 +53,6 @@ public class LoginActivity extends AppCompatActivity {
                 loginUserAccount();
             }
         });
-
-//        rememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-//                if( compoundButton.isChecked()){
-//
-//                    SharedPreferences shp= getSharedPreferences("checkbox", MODE_PRIVATE);
-//                    SharedPreferences.Editor editor = shp.edit();
-//                    editor.putString("rememberMe", "true");
-//                    editor.apply();
-//                    Toast.makeText(LoginActivity.this, "Checked", Toast.LENGTH_SHORT).show();
-//
-//                } else if( !compoundButton.isChecked()){
-//
-//                    SharedPreferences shp= getSharedPreferences("checkbox", MODE_PRIVATE);
-//                    SharedPreferences.Editor editor = shp.edit();
-//                    editor.putString("rememberMe", "false");
-//                    editor.apply();
-//                    Toast.makeText(LoginActivity.this, "Unchecked", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
 
         newHere.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    //Functia de autentificare utilizator
     private void loginUserAccount() {
 
         String emailEt = email.getText().toString().trim();

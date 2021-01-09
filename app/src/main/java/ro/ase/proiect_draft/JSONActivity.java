@@ -85,16 +85,6 @@ public class JSONActivity extends ListActivity {
             @Override
             public void onTaskFinishedEvent(String result) {
 
-//                if(pDialog.isShowing())
-//                {
-//                    try {
-//                        Thread.sleep(3000);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    pDialog.dismiss();
-//                }
-
                 //Adapter listview json
                 ListAdapter adapter = new SimpleAdapter(JSONActivity.this,
                         syllabusList,
@@ -175,15 +165,6 @@ public class JSONActivity extends ListActivity {
                 Log.e("GetSyllabus", "event is null");
         }
 
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//            pDialog = new ProgressDialog(JSONActivity.this);
-//            pDialog.setMessage("Please wait...");
-//            pDialog.setCancelable(false);
-//            pDialog.show();
-//        }
-
         public void loadJSON(String jsonStr)
         {
             if(jsonStr!=null)
@@ -257,18 +238,4 @@ public class JSONActivity extends ListActivity {
         }
     }
 
-    public void ToggleTheme( boolean isChecked ){
-        if (isChecked) {
-            //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
-        }
-        else{
-            //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
-
-        finish();
-        startActivity(new Intent(JSONActivity.this, JSONActivity.this.getClass()));
-        //recreate();
-
-    }
 }

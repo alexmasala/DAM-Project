@@ -34,7 +34,6 @@ public class MyJournalFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     private FloatingActionButton floatingActionButton;
     Button btnShowGraph;
     private Intent intent;
@@ -49,25 +48,16 @@ public class MyJournalFragment extends Fragment {
     private ListView listView;
     List<JournalNote> notesList = new ArrayList<JournalNote>();
 
-    //Ce era in onCreate ~= onCreateView
-    //nu E setOnContentView pt fragmente, ai alte metode
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_journal, container, false);
 
-        //in activity la seminar era pus in onCreate, dupa startActivity
         listView = (ListView) view.findViewById(R.id.listView);
-        //set the adapter, etc
-
-      //  FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.floatingActionButton);
         floatingActionButton = (FloatingActionButton) view.findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
 
-         //de ce punem intentul in onClickView?
-            //Aici punem intentul si start activity
-         //this is what runs when you click the button
             @Override
             public void onClick(View view) {
 

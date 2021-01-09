@@ -25,8 +25,6 @@ public class AboutFragment extends Fragment {
         // Required empty public constructor
     }
 
-
-//    @Bind(R.id.textViewLink)
     TextView linkText;
     Button rating;
 

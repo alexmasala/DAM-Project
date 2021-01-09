@@ -1,6 +1,7 @@
 package ro.ase.proiect_draft;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,30 +28,19 @@ public class AddExamActivity extends AppCompatActivity {
     EditText etnumeMaterie, etnrCredite, etdataSustinere, etoraSustinere, etdurataExamen;
     Spinner spinner;
     Button save;
+    final  String DATE_FORMAT = "MM/dd/yyyy";
 
-    private void initComponents() {
-        etnumeMaterie = findViewById(R.id.editNumeMaterie);
-        etnrCredite = findViewById(R.id.editTextNumarCredite);
-        etdataSustinere= findViewById(R.id.editTextDate);
-        etoraSustinere = findViewById(R.id.editTextOra);
-        etdurataExamen = findViewById(R.id.editTextDurataExam);
-
-        save = findViewById(R.id.buttonSave);
-
-        spinner = findViewById(R.id.spinnerGenExam);
-
-        ArrayAdapter<CharSequence> adaptor = ArrayAdapter.createFromResource(this, R.array.tip_examen,
-                android.R.layout.simple_spinner_dropdown_item);
-
-        spinner.setAdapter(adaptor);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            setTheme(R.style.AppThemeDark);
+        } else {
+            setTheme(R.style.AppTheme);
+        }
         setContentView(R.layout.activity_add_exam);
 
-        //initComponents();
         spinner = findViewById(R.id.spinnerGenExam);
 
         etnumeMaterie = findViewById(R.id.editNumeMaterie);
@@ -67,18 +57,19 @@ public class AddExamActivity extends AppCompatActivity {
 
         spinner.setAdapter(adaptor);
 
+        //Preia vechile date la deschiderea activityului
         SharedPreferences preferences=getSharedPreferences("dateExam",0);
         int id=preferences.getInt("id",0);
         String numeMaterie=preferences.getString("materie",null);
         int nrCredite=preferences.getInt("credite",0);
-        String dataSustinere=preferences.getString("data",null);
+       // String dataSustinere=preferences.getString("data",null);
         int durataExamen =preferences.getInt("durata",0);
         String tipExamen=preferences.getString("tipExamen",null);
         String ora=preferences.getString("ora",null);
 
         Exam exam = new Exam(id, numeMaterie, nrCredite, tipExamen, new Date(), ora, durataExamen);
         Toast.makeText(getApplicationContext(),exam.toString(),Toast.LENGTH_LONG).show();
-        final  String DATE_FORMAT = "dd/MM/yyyy";
+
         intent = getIntent();
 
         if(intent.hasExtra(ExamListActivity.EDIT_EXAM))
@@ -159,9 +150,6 @@ public class AddExamActivity extends AppCompatActivity {
                         editor.putString("ora",examInserat.getOra());
 
                         editor.apply();
-
-
-
 
                         //Toast.makeText(getApplicationContext(), carte.toString(), Toast.LENGTH_LONG).show();
                         intent.putExtra(ADD_EXAM, examInserat);

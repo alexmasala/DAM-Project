@@ -3,6 +3,7 @@ package ro.ase.proiect_draft;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -38,12 +39,20 @@ public class ExamListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            setTheme(R.style.AppThemeDark);
+        } else {
+            setTheme(R.style.AppTheme);
+        }
         setContentView(R.layout.activity_exam_list);
 
         lvExam = findViewById(R.id.lv_exams);
         fabAddExams= (FloatingActionButton) findViewById(R.id.fabAddExam);
 
         addAdapter();
+
+        lvExam.setOnItemClickListener(updateExamEventListener());
+        lvExam.setOnItemLongClickListener(deleteExamEventListener());
 
         fabAddExams.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,14 +62,8 @@ public class ExamListActivity extends AppCompatActivity {
             }
         });
 
-//        lvExam.setOnItemClickListener(updateExamEventListener());
-//        lvExam.setOnItemLongClickListener(deleteExamEventListener());
-        //initComponents();
         examService = new ExamService(getApplicationContext());
         examService.getAll(getAllCallback());
-
-
-
     }
 
     private Callback<List<Exam>> getAllCallback() {
@@ -144,21 +147,6 @@ public class ExamListActivity extends AppCompatActivity {
         }
     }
 
-    private void initComponents() {
-//        lvExam = findViewById(R.id.lv_exams);
-//        fabAddExams= findViewById(R.id.fabAddExam);
-//
-//        addAdapter();
-//        //fabAddExams.setOnClickListener(addExamEventListener());
-//
-//        lvExam.setOnItemClickListener(updateExamEventListener());
-//        lvExam.setOnItemLongClickListener(deleteExamEventListener());
-
-        //sharedPreferences = getSharedPreferences(ProfileActivity.PROFILE_SHARED, MODE_PRIVATE);
-        //displayMessage();
-    }
-
-
     private AdapterView.OnItemLongClickListener deleteExamEventListener() {
         return new AdapterView.OnItemLongClickListener() {
             @Override
@@ -191,18 +179,17 @@ public class ExamListActivity extends AppCompatActivity {
         };
     }
 
-//    private View.OnClickListener addExamEventListener() {
-//        return new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent( ExamListActivity.this, AddExamActivity.class);
-//                startActivityForResult(intent, ADD_EXAM_REQUEST_CODE);
-//            }
-//        };
-//    }
+    private View.OnClickListener addExamEventListener() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( ExamListActivity.this, AddExamActivity.class);
+                startActivityForResult(intent, ADD_EXAM_REQUEST_CODE);
+            }
+        };
+    }
 
     private void addAdapter() {
-//        ArrayAdapter<User> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, expens);
         ExamAdapter adapter = new ExamAdapter(getApplicationContext(), R.layout.exams_listview,
                 listaExamene, getLayoutInflater());
         lvExam.setAdapter(adapter);
@@ -210,7 +197,6 @@ public class ExamListActivity extends AppCompatActivity {
 
     private void notifyAdapter() {
         ExamAdapter adapter = (ExamAdapter) lvExam.getAdapter();
-//        ArrayAdapter<User> adapter = (ArrayAdapter<User>) lvExpenses.getAdapter();
         adapter.notifyDataSetChanged();
     }
 

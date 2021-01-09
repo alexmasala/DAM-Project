@@ -14,7 +14,6 @@ import static ro.ase.proiect_draft.SettingsFragment.SAVE_SWITCH;
 
 public class RateActivity extends AppCompatActivity {
 
-    public static final String RATING = "rate";
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     RatingBar rateUs;
@@ -34,12 +33,10 @@ public class RateActivity extends AppCompatActivity {
         rateUs.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean b) {
-               // final int numStars = ratingBar.getNumStars();
                 editor = preferences.edit();
                 editor.putFloat("numStars", rating);
                 editor.apply();
                 editor.commit();
-              //  float ratings = preferences.getFloat("numStars", 0);
             }
         });
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
