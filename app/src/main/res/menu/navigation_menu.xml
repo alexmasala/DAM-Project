@@ -14,12 +14,12 @@
         android:title="@string/courses" />
 
     <item android:id="@+id/menuSyllabus"
-        android:icon="@drawable/sillabus"
-        android:title="syllabus"/>
+        android:icon="@drawable/calendar"
+        android:title="@string/syllabus"/>
 
-    <item android:id="@+id/menuTaxes"
-        android:icon="@drawable/tax2"
-        android:title="@string/taxes" />
+    <item android:id="@+id/menuExamens"
+        android:icon="@drawable/exam"
+        android:title="@string/examens" />
 
     <item android:title="@string/others">
 

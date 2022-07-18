@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/space_wallpaper"
-    tools:context=".Login">
+    tools:context=".LoginActivity">
 
     <EditText
         android:id="@+id/password3"
@@ -20,10 +20,12 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFDFD"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogIn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.648"
+        app:layout_constraintHorizontal_bias="0.656"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email3" />
+        app:layout_constraintTop_toBottomOf="@+id/email3"
+        app:layout_constraintVertical_bias="0.027" />
 
     <TextView
         android:id="@+id/authentification3"
@@ -36,6 +38,7 @@
         android:textSize="40dp"
         app:layout_constraintBottom_toTopOf="@+id/email3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -57,7 +60,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/newHere"
@@ -74,7 +78,7 @@
         app:layout_constraintHorizontal_bias="0.659"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogIn"
-        app:layout_constraintVertical_bias="0.866" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <CheckBox
         android:id="@+id/chbRemember"
@@ -99,10 +103,12 @@
         android:id="@+id/btnLogIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="100dp"
         android:text="Log In"
-        app:layout_constraintStart_toStartOf="@+id/password3"
-        app:layout_constraintTop_toBottomOf="@+id/password3" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.597" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

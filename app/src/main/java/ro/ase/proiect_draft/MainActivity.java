@@ -36,18 +36,11 @@ import static ro.ase.proiect_draft.SettingsFragment.SAVE_SWITCH;
 
 public class MainActivity extends AppCompatActivity {
 
-//    private SharedPreferences.OnSharedPreferenceChangeListener prefListener;
-//    SharedPreferences pref;
-//    public static final String PREF_LANGUAGE = "language_pref";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         SharedPreferences sharedPreferences = this.getApplicationContext().getSharedPreferences(SAVE_SWITCH, Context.MODE_PRIVATE);
         toggleTheme(sharedPreferences.getBoolean(IS_CHECKED, false));
-
-        //Limba fisier schimbare
-       // getFragmentManager().beginTransaction().replace(android.R.id.content, new SettingsFragment()).commit();
 
         super.onCreate(savedInstanceState);
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {

@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class Student implements Serializable {
 
-    private String id = UUID.randomUUID().toString();
+    private String idStudent = UUID.randomUUID().toString();
     private String nume;
     private String prenume;
     private String facultate;
@@ -22,8 +22,8 @@ public class Student implements Serializable {
         this.password = password;
     }
 
-    public String getId() {
-        return id;
+    public String getIdStudent() {
+        return idStudent;
     }
 
     public String getNume() {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main"
@@ -30,10 +31,10 @@
         tools:layout="@layout/fragment_syllabus" />
 
     <fragment
-        android:id="@+id/menuTaxes"
-        android:name="ro.ase.proiect_draft.TaxesFragment"
-        android:label="My Journal"
-        tools:layout="@layout/fragment_taxes" />
+        android:id="@+id/menuExam"
+        android:name="ro.ase.proiect_draft.ExamFragment"
+        android:label="Examens"
+        tools:layout="@layout/fragment_exam" />
 
     <fragment
         android:id="@+id/menuSettings"

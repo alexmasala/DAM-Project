@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "109007343106",
+    "firebase_url": "https://dam-personal-student-page-default-rtdb.firebaseio.com",
     "project_id": "dam-personal-student-page",
     "storage_bucket": "dam-personal-student-page.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "109007343106-2pu1vfr2615nso0p5g5dvabtvvtn9tg0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ro.ase.proiect_draft",
+            "certificate_hash": "e65677f231f6e6b7af2b3f09804be47f90d5771d"
+          }
+        },
         {
           "client_id": "109007343106-2bkgruat4lhtunff7rjoi1300uopt718.apps.googleusercontent.com",
           "client_type": 3
