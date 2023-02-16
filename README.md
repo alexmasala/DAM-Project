@@ -1,4 +1,4 @@
-#Aplicație mobilă pentru monitorizarea activității de student (pagină personală)
+## Aplicație mobilă pentru monitorizarea activității de student (pagină personală)
 
 Aplicația se deschide cu o pagina de Login in care are loc inregistrarea daca nu si-a facut cont deja. In pagina de Register sunt solicitate anumite informatii cu caracter personal cum ar fi nume, prenume, facultatea la care a fost admis, specializarea, contul de email si parola. In urma inregistrarii utilizatorul se logheaza cu un user si parola.
 
